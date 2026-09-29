@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>זול זול זול - חסכו בתקשורת</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root {
+  --pink: #ee117a;
+  --pink-dark: #c70076;
+  --pink-light: #fce4f0;
+  --pink-glow: rgba(238, 17, 122, 0.18);
+  --pink-gradient: linear-gradient(135deg, #ee117a, #ff4da6);
+  --bg: #faf8fc;
+  --bg-alt: #f5f0f8;
+  --text: #1a1a2e;
+  --text-secondary: #5a5f72;
+  --text-muted: #9ca3af;
+  --card-bg: rgba(255, 255, 255, 0.82);
+  --card-border: rgba(238, 17, 122, 0.1);
+  --card-shadow: 0 8px 40px rgba(238, 17, 122, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+  --green: #10b981;
+  --green-dark: #059669;
+  --green-bg: rgba(16, 185, 129, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.7);
+  --input-border: rgba(200, 190, 210, 0.5);
+  --input-focus: #ee117a;
+  --divider: rgba(238, 17, 122, 0.12);
+  --overlay: rgba(15, 10, 30, 0.6);
+  color-scheme: light;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  direction: rtl;
+  text-align: right;
+  padding-inline: 16px;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+* { box-sizing: border-box; }
+
+/* Mesh gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 0%, rgba(238, 17, 122, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 90% 60%, rgba(238, 17, 122, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating decorative orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+.orb-1 {
+  width: 300px; height: 300px;
+  background: rgba(238, 17, 122, 0.07);
+  top: -80px; right: -60px;
+  animation-delay: 0s;
+}
+.orb-2 {
+  width: 250px; height: 250px;
+  background: rgba(139, 92, 246, 0.06);
+  bottom: 10%; left: -80px;
+  animation-delay: -7s;
+}
+.orb-3 {
+  width: 180px; height: 180px;
+  background: rgba(16, 185, 129, 0.05);
+  top: 50%; right: 20%;
+  animation-delay: -13s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -30px) scale(1.05); }
+  66% { transform: translate(-15px, 20px) scale(0.95); }
+}
+
+.page-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo */
+.logo-area {
+  text-align: center;
+  padding: 12px 0 8px;
+}
+.logo img {
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.hero-divider {
+  width: 100%;
+  height: 3px;
+  margin: 0 0 20px;
+  border-radius: 0;
+  background: linear-gradient(90deg, transparent, #ee117a, #ff6ec7, #8b5cf6, transparent);
+  background-size: 200% 100%;
+  animation: dividerShimmer 3s ease-in-out infinite;
+  position: relative;
+}
+@keyframes dividerShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 16px;
+}
+.hero h1 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.65rem, 5vw, 2.3rem);
+  line-height: 1.3;
+  margin: 8px 0 8px;
+  text-wrap: balance;
+  letter-spacing: -0.5px;
+}
+.hero h1 .accent {
+  background: var(--pink-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Steps indicator */
+.steps-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  max-width: 400px;
+  direction: rtl;
+}
+.step-dot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.step-dot .step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0f5;
+  border: 2px solid var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #aaa;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.step-dot .step-label {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 6px;
+  font-weight: 500;
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+.step-dot.active .step-circle {
+  background: var(--pink-gradient);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 18px rgba(238, 17, 122, 0.35), 0 0 6px rgba(238, 17, 122, 0.2);
+  transform: scale(1.1);
+}
+.step-dot.active .step-label {
+  color: var(--pink);
+  font-weight: 600;
+}
+.step-dot.done .step-circle {
+  background: var(--pink);
+  border-color: transparent;
+  color: #fff;
+  font-size: 0;
+}
+.step-dot.done .step-circle::after {
+  content: '✓';
+  font-size: 16px;
+  font-weight: 700;
+}
+.step-dot.done .step-label {
+  color: var(--pink);
+}
+.step-line {
+  flex: 1;
+  height: 3px;
+  background: var(--divider);
+  margin: 0 -2px;
+  margin-bottom: 22px;
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.step-line.done {
+  background: var(--pink);
+}
+.step-line.done::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: lineShimmer 1.5s ease-in-out;
+}
+@keyframes lineShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Card — glassmorphism */
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: visible;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(238, 17, 122, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.step { display: none; }
+.step.active { display: block; animation: fadeUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h2 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 0 24px;
+  text-align: center;
+  letter-spacing: -0.3px;
+}
+
+/* Form fields */
+label.field-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+select, input[type="text"], input[type="tel"], input[type="number"] {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 14px;
+  background: var(--input-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-appearance: none;
+  appearance: none;
+}
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239ca3af' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  padding-left: 36px;
+}
+select:focus, input:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 4px var(--pink-glow);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.service-toggle-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2px dashed rgba(238, 17, 122, 0.3);
+  background: linear-gradient(135deg, rgba(238, 17, 122, 0.04), rgba(139, 92, 246, 0.04));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--pink);
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+}
+.service-toggle-btn:hover {
+  border-color: var(--pink);
+  background: linear-gradient(135deg, rgba(238, 17, 122, 0.08), rgba(139, 92, 246, 0.08));
+  transform: translateY(-1px);
+}
+.service-toggle-btn .toggle-arrow {
+  transition: transform 0.3s ease;
+  font-size: 12px;
+}
+.service-toggle-btn.open .toggle-arrow {
+  transform: rotate(180deg);
+}
+.service-toggle-btn.has-selection {
+  border-style: solid;
+  border-color: var(--pink);
+  background: linear-gradient(135deg, rgba(238, 17, 122, 0.06), rgba(139, 92, 246, 0.06));
+}
+.service-grid-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 16px;
+}
+.service-grid-wrap.open {
+  grid-template-rows: 1fr;
+}
+.service-grid-inner {
+  overflow: hidden;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 4px 0 8px;
+}
+.service-card {
+  background: #282828;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  padding: 20px 8px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--pink-gradient);
+  transition: height 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(238, 17, 122, 0.15);
+}
+.service-card:hover::after {
+  height: 5px;
+}
+.service-card.selected {
+  border: 2px solid transparent;
+  background: linear-gradient(145deg, #3a3a3a, #282828) padding-box, linear-gradient(135deg, #ee117a, #ff6ec7, #8b5cf6, #ee117a) border-box;
+  box-shadow: 0 0 40px rgba(238, 17, 122, 0.4), 0 0 80px rgba(238, 17, 122, 0.15), 0 12px 40px rgba(0, 0, 0, 0.3);
+  transform: scale(1.08) translateY(-4px);
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+@keyframes selectedPulse {
+  0%, 100% { box-shadow: 0 0 40px rgba(238, 17, 122, 0.4), 0 0 80px rgba(238, 17, 122, 0.15), 0 12px 40px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 0 50px rgba(238, 17, 122, 0.55), 0 0 100px rgba(238, 17, 122, 0.25), 0 12px 40px rgba(0, 0, 0, 0.3); }
+}
+.service-card.selected::before {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 22px;
+  height: 22px;
+  background: var(--pink-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  font-weight: 700;
+  z-index: 2;
+  animation: checkPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+.service-card.selected::after {
+  height: 5px;
+  box-shadow: 0 0 16px rgba(238, 17, 122, 0.7);
+  background: linear-gradient(90deg, #ee117a, #ff6ec7, #8b5cf6);
+}
+.service-card.selected .service-name {
+  color: #ff6ec7;
+  text-shadow: 0 0 12px rgba(238, 17, 122, 0.4);
+  font-size: 16px;
+}
+.service-icon {
+  width: 100px;
+  height: 100px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.service-card:hover .service-icon {
+  transform: scale(1.1);
+}
+.service-card.selected .service-icon {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 14px rgba(238, 17, 122, 0.6));
+}
+.service-card.selected .service-icon img {
+  filter: brightness(2);
+}
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(1.6);
+}
+.service-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  line-height: 1.3;
+}
+@media (max-width: 420px) {
+  .service-grid { gap: 8px; }
+  .service-card { padding: 16px 6px 12px; }
+  .service-icon { width: 70px; height: 70px; }
+  .service-name { font-size: 14px; }
+}
+#serviceFields {
+  animation: fadeUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.all-steps-indicator {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 20px;
+}
+.all-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.all-step-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f0f0f5;
+  border: 2px solid var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #aaa;
+  transition: all 0.3s ease;
+}
+.all-step-item.active .all-step-dot {
+  background: var(--pink-gradient);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(238, 17, 122, 0.3);
+  transform: scale(1.1);
+}
+.all-step-item.done .all-step-dot {
+  background: var(--green);
+  border-color: transparent;
+  color: #fff;
+  font-size: 0;
+}
+.all-step-item.done .all-step-dot::after {
+  content: '✓';
+  font-size: 13px;
+  font-weight: 700;
+}
+.all-step-label {
+  font-size: 10px;
+  color: #aaa;
+  margin-top: 5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.all-step-item.active .all-step-label {
+  color: var(--pink);
+  font-weight: 600;
+}
+.all-step-item.done .all-step-label {
+  color: var(--green-dark);
+}
+.all-step-line {
+  width: 24px;
+  height: 2px;
+  background: var(--divider);
+  margin: 14px 4px 0;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+  flex-shrink: 0;
+}
+.all-step-line.done {
+  background: var(--green);
+}
+.all-step-panel {
+  display: none;
+  animation: fadeUp 0.3s ease;
+}
+.all-step-panel.active {
+  display: block;
+}
+.all-step-panel .field-group {
+  margin-bottom: 14px;
+}
+.savings-display {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(16, 185, 129, 0.14));
+  border: 1.5px solid rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  padding: 16px 18px;
+  text-align: center;
+  margin: 16px 0;
+  animation: fadeUp 0.4s ease;
+  transition: all 0.3s ease;
+}
+.savings-display-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+.savings-display-amount {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+.savings-display-amount small {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.savings-display-year {
+  font-size: 12px;
+  color: var(--green-dark);
+  font-weight: 600;
+  margin-top: 4px;
+}
+.all-step-nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+.all-step-nav .btn {
+  margin-top: 0;
+  flex: 1;
+  padding: 13px;
+  font-size: 0.95rem;
+}
+.btn-back {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--text-secondary) !important;
+  box-shadow: none !important;
+}
+.btn-back::after { display: none; }
+.btn-back:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+.electricity-discount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  border-radius: 10px;
+  color: #2e7d32;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeUp 0.3s ease;
+}
+.electricity-discount-icon {
+  font-size: 1.2rem;
+}
+.electricity-discount strong {
+  color: #1b5e20;
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.05rem;
+}
+.field-group { margin-bottom: 18px; }
+.field-group:last-of-type { margin-bottom: 0; }
+
+.lines-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid var(--divider);
+  transition: border-color 0.3s ease;
+}
+.lines-input-wrap:focus-within {
+  border-color: var(--pink);
+}
+.lines-input-wrap input {
+  flex: 1;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 8px;
+  -moz-appearance: textfield;
+  background: transparent;
+}
+.lines-input-wrap input::-webkit-outer-spin-button,
+.lines-input-wrap input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.lines-input-wrap input:focus {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+.lines-btn {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: linear-gradient(135deg, rgba(238, 17, 122, 0.08), rgba(139, 92, 246, 0.08));
+  color: var(--pink);
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lines-btn:hover {
+  background: linear-gradient(135deg, rgba(238, 17, 122, 0.15), rgba(139, 92, 246, 0.15));
+}
+.lines-btn:active {
+  transform: scale(0.92);
+}
+.price-input-wrap {
+  position: relative;
+}
+.price-input-wrap .currency {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255,255,255,0.15), transparent);
+  pointer-events: none;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: var(--pink-gradient);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(238, 17, 122, 0.35);
+  margin-top: 24px;
+  letter-spacing: 0.02em;
+}
+.btn-primary:hover {
+  box-shadow: 0 6px 28px rgba(238, 17, 122, 0.45);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.btn-secondary {
+  background: rgba(238, 17, 122, 0.08);
+  color: var(--pink);
+  margin-top: 12px;
+  backdrop-filter: blur(4px);
+}
+.btn-secondary::after { display: none; }
+.btn-secondary:hover {
+  background: rgba(238, 17, 122, 0.14);
+}
+
+/* Results */
+.result-box {
+  text-align: center;
+}
+.savings-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-bg);
+  color: var(--green-dark);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+.savings-badge svg { flex-shrink: 0; }
+
+.result-current, .result-recommended {
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.result-current {
+  background: rgba(250, 245, 248, 0.8);
+  border: 1px solid var(--divider);
+}
+.result-recommended {
+  background: linear-gradient(135deg, rgba(252, 228, 240, 0.6), rgba(255, 240, 248, 0.8));
+  border: 2px solid var(--pink);
+  position: relative;
+  backdrop-filter: blur(8px);
+}
+.result-recommended .badge-top {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--pink-gradient);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(238, 17, 122, 0.3);
+  letter-spacing: 0.03em;
+}
+.result-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+.result-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 2px;
+}
+.result-price {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  margin: 4px 0;
+  letter-spacing: -0.5px;
+}
+.result-current .result-price { color: var(--text-secondary); }
+.result-recommended .result-price {
+  background: var(--pink-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.result-price small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  -webkit-text-fill-color: var(--text-muted);
+}
+.result-details {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 6px 0 0;
+  line-height: 1.6;
+}
+.result-arrow {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0;
+  color: var(--pink);
+  animation: bounceArrow 1.5s ease-in-out infinite;
+}
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Contact form */
+.contact-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 440px) {
+  .contact-fields { grid-template-columns: 1fr; }
+}
+.legal-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+.total-lines-calc {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+  text-align: center;
+}
+.total-lines-calc strong {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+}
+.phone-error, .name-error {
+  display: none;
+  font-size: 0.78rem;
+  color: #e53e3e;
+  margin-top: 4px;
+}
+.phone-error.show, .name-error.show {
+  display: block;
+}
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 14px;
+  cursor: pointer;
+  text-align: right;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.consent-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.consent-link {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.consent-details {
+  display: none;
+  background: rgba(0,0,0,0.03);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: right;
+  animation: fadeUp 0.3s ease;
+}
+.consent-details.show { display: block; }
+.consent-details p { margin: 0 0 6px; }
+.consent-details ul {
+  margin: 0 0 6px;
+  padding-right: 18px;
+  list-style: disc;
+}
+.consent-details li { margin-bottom: 2px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 16px;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: #fff;
+  border-radius: 28px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  animation: modalPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.18), 0 0 40px rgba(238, 17, 122, 0.08);
+  border: 1px solid rgba(238, 17, 122, 0.12);
+}
+.modal-body {
+  position: relative;
+  padding: 28px 24px 22px;
+  z-index: 1;
+}
+.modal-logo-img {
+  width: 130px;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 4px 20px rgba(238, 17, 122, 0.3));
+  animation: logoBounce 2s ease-in-out infinite;
+}
+@keyframes logoBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.8) translateY(40px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.05);
+  border: none;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 2;
+}
+.modal-close:hover { background: rgba(0, 0, 0, 0.1); color: #666; }
+.modal-success-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  animation: successPop 0.5s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+}
+@keyframes successPop {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+.modal h3 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin: 0 0 8px;
+  letter-spacing: -0.3px;
+  color: #1a1a2e;
+}
+.modal p {
+  color: #5a5f72;
+  line-height: 1.6;
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+}
+.modal p strong { color: #ee117a; }
+.modal-reward-box {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2px solid #86efac;
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin: 12px 0 14px;
+  position: relative;
+  overflow: hidden;
+}
+.modal-reward-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.08), transparent);
+  animation: rewardShimmer 2.5s ease-in-out infinite;
+}
+@keyframes rewardShimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+.modal-reward-label {
+  font-size: 0.82rem;
+  color: #666;
+  margin-bottom: 4px;
+  position: relative;
+}
+.modal-reward-amount {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: #16a34a;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+.modal-reward-detail {
+  font-size: 0.8rem;
+  color: #4ade80;
+  margin-top: 2px;
+  font-weight: 500;
+  position: relative;
+}
+.modal-perks {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 10px 0 16px;
+  flex-wrap: wrap;
+}
+.modal-perk {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.76rem;
+  color: #555;
+  background: #f5f5f5;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+.modal-perk svg {
+  width: 13px;
+  height: 13px;
+  color: #34d399;
+  flex-shrink: 0;
+}
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #ee117a, #ff4da6);
+  color: #fff;
+  padding: 15px 36px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 24px rgba(238, 17, 122, 0.4), 0 0 0 0 rgba(238, 17, 122, 0.3);
+  margin-bottom: 10px;
+  animation: badgePulse 2s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 4px 24px rgba(238, 17, 122, 0.4), 0 0 0 0 rgba(238, 17, 122, 0.3); }
+  50% { box-shadow: 0 4px 24px rgba(238, 17, 122, 0.4), 0 0 0 8px rgba(238, 17, 122, 0); }
+}
+.app-badge:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(238, 17, 122, 0.5);
+}
+.app-badge svg { flex-shrink: 0; }
+.modal-terms {
+  font-size: 0.68rem;
+  color: #bbb;
+}
+.modal-confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  top: -10px;
+  animation: confettiFall 3s ease-in-out forwards;
+}
+@keyframes confettiFall {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: translateY(400px) rotate(720deg) scale(0.3); }
+}
+
+/* App download section */
+.app-download-section {
+  margin: 28px auto 0;
+  max-width: 420px;
+  padding: 20px 22px;
+  border-radius: 20px;
+  background: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(238, 17, 122, 0.12);
+  box-shadow: 0 4px 24px rgba(238, 17, 122, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.app-download-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(238, 17, 122, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.app-download-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ee117a, #ff6ec7, #8b5cf6, #ee117a);
+  background-size: 200% 100%;
+  animation: dividerShimmer 3s ease-in-out infinite;
+}
+.app-download-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(238, 17, 122, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.app-dl-mascot {
+  width: 60px;
+  margin: 0 auto 10px;
+  filter: drop-shadow(0 2px 8px rgba(238, 17, 122, 0.15));
+}
+.app-dl-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 420px) {
+  .app-dl-top { flex-direction: column-reverse; gap: 12px; }
+  .app-dl-text { text-align: center; }
+}
+.app-dl-text {
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-align: right;
+  line-height: 1.6;
+}
+.app-dl-text span {
+  color: #ee117a;
+  font-weight: 700;
+}
+.app-dl-badges {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.app-dl-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: #282828;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.app-dl-badge:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+.app-dl-badge svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.app-dl-badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+.app-dl-badge-text small {
+  font-size: 0.48rem;
+  font-weight: 400;
+  opacity: 0.6;
+  letter-spacing: 0.2px;
+}
+.app-dl-badge-text strong {
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+
+.footer {
+  text-align: center;
+  padding: 36px 0 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.confetti-emoji {
+  font-size: 2.6rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Success */
+.success-check {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--green-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes successPop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+.success-check svg { color: var(--green); }
+
+/* Number counter animation */
+.year-savings {
+  text-align: center;
+  margin-top: 16px;
+}
+.year-savings-amount {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--green-dark);
+}
+.year-savings-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.result-summary {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(252, 228, 240, 0.5), rgba(255, 240, 248, 0.7));
+  border-radius: 18px;
+  border: 2px solid var(--pink);
+  margin-bottom: 20px;
+}
+.result-summary-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+.result-summary .result-price {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 900;
+  font-size: 2.4rem;
+  margin: 8px 0;
+  letter-spacing: -1px;
+  background: var(--pink-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.result-summary .result-price small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  -webkit-text-fill-color: var(--text-muted);
+}
+.result-summary-compare {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+.result-promo-note {
+  font-size: 0.8rem;
+  color: var(--pink);
+  margin: 4px 0 8px;
+  font-weight: 500;
+}
+
+.savings-breakdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--green-bg);
+  border-radius: 16px;
+  padding: 18px 12px;
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+.savings-item {
+  flex: 1;
+  text-align: center;
+}
+.savings-item-amount {
+  display: block;
+  font-family: 'Rubik', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+}
+.savings-item-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  font-weight: 500;
+}
+.savings-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(16, 185, 129, 0.25);
+  flex-shrink: 0;
+}
+
+/* CTA Button */
+.btn-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 18px 24px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ee117a 0%, #ff4da6 50%, #ee117a 100%);
+  background-size: 200% 200%;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 6px 24px rgba(238, 17, 122, 0.4),
+    0 0 0 0 rgba(238, 17, 122, 0.3);
+  animation: ctaShimmer 3s ease-in-out infinite, ctaPulse 2.5s ease-in-out infinite;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: 'Open Sans', sans-serif;
+}
+.btn-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-20deg);
+  animation: ctaSweep 3.5s ease-in-out infinite;
+}
+.btn-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 10px 36px rgba(238, 17, 122, 0.5),
+    0 0 0 4px rgba(238, 17, 122, 0.15);
+}
+.btn-cta:active {
+  transform: scale(0.98);
+}
+.btn-cta-text {
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 1;
+}
+.btn-cta-sub {
+  font-weight: 500;
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-top: 2px;
+  position: relative;
+  z-index: 1;
+}
+.btn-cta-arrow {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes ctaShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 6px 24px rgba(238, 17, 122, 0.4), 0 0 0 0 rgba(238, 17, 122, 0.3); }
+  50% { box-shadow: 0 6px 24px rgba(238, 17, 122, 0.4), 0 0 0 8px rgba(238, 17, 122, 0); }
+}
+@keyframes ctaSweep {
+  0%, 100% { left: -60%; }
+  50% { left: 120%; }
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  50% { transform: translateY(-50%) translateX(-6px); }
+}
+.lang-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 50;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  border: 1px solid var(--divider);
+}
+.lang-btn {
+  padding: 6px 14px;
+  border: none;
+  background: #fff;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Open Sans', sans-serif;
+}
+.lang-btn.active {
+  background: var(--pink-gradient);
+  color: #fff;
+}
+.lang-btn:not(.active):hover {
+  background: var(--pink-light);
+}
+</style>
+
+</head>
+<body>
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('he')">עברית</button>
+  <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+</div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="page-content">
+
+<div class="logo-area">
+  <div class="logo"><img src="logo.png" alt="זול זול זול - משווים עוברים חוסכים"></div>
+</div>
+
+<div class="hero-divider"></div>
+
+<div class="hero">
+  <h1 data-i18n="hero_title">גלו כמה אתם יכולים <span class="accent">לחסוך</span> בחשבון התקשורת</h1>
+  <p data-i18n="hero_sub">מלאו את הפרטים ונמצא לכם את החבילה הכי משתלמת בשוק</p>
+</div>
+
+<div class="steps-indicator" id="stepsIndicator">
+  <div class="step-dot active" data-step="1">
+    <div class="step-circle">1</div>
+    <span class="step-label" data-i18n="step_compare">משווים</span>
+  </div>
+  <div class="step-line" id="line1"></div>
+  <div class="step-dot" data-step="2">
+    <div class="step-circle">2</div>
+    <span class="step-label" data-i18n="step_save">חוסכים</span>
+  </div>
+  <div class="step-line" id="line2"></div>
+  <div class="step-dot" data-step="3">
+    <div class="step-circle">3</div>
+    <span class="step-label" data-i18n="step_switch">עוברים</span>
+  </div>
+</div>
+
+<div class="card">
+  <!-- Step 1: Service Selection -->
+  <div class="step active" id="step1">
+    <h2 data-i18n="step1_title">מה החבילה הנוכחית שלכם?</h2>
+    <label class="field-label" data-i18n="choose_service">בחרו סוג שירות</label>
+    <div class="service-grid">
+      <button class="service-card" data-value="cellular" onclick="selectService(this)">
+        <div class="service-icon"><img src="icon-cellular.png" alt="סלולר"></div>
+        <span class="service-name" data-i18n="svc_cellular">סלולר</span>
+      </button>
+      <button class="service-card" data-value="fiber" onclick="selectService(this)">
+        <div class="service-icon"><img src="icon-fiber.png" alt="סיבים אופטיים"></div>
+        <span class="service-name" data-i18n="svc_fiber">סיבים אופטיים</span>
+      </button>
+      <button class="service-card" data-value="internet" onclick="selectService(this)">
+        <div class="service-icon"><img src="icon-internet.png" alt="אינטרנט"></div>
+        <span class="service-name" data-i18n="svc_internet">אינטרנט</span>
+      </button>
+      <button class="service-card" data-value="tv" onclick="selectService(this)">
+        <div class="service-icon"><img src="icon-tv.png" alt="טלוויזיה וטריפל"></div>
+        <span class="service-name" data-i18n="svc_tv">טלוויזיה וטריפל</span>
+      </button>
+      <button class="service-card" data-value="electricity" onclick="selectService(this)">
+        <div class="service-icon"><img src="icon-electricity.png" alt="חשמל"></div>
+        <span class="service-name" data-i18n="svc_electricity">חשמל</span>
+      </button>
+      <button class="service-card" data-value="all" onclick="selectService(this)">
+        <div class="service-icon" style="display:flex;align-items:center;justify-content:center;"><img src="icon-all.png" alt="הכל" style="filter: invert(1) brightness(1.6); width: 38px; height: 38px;"></div>
+        <span class="service-name" data-i18n="svc_all">הכל</span>
+      </button>
+    </div>
+    <select id="serviceType" style="display:none">
+      <option value="" disabled selected data-i18n="choose_service">בחרו סוג שירות</option>
+      <option value="cellular" data-i18n="svc_cellular">סלולר</option>
+      <option value="fiber" data-i18n="svc_fiber_short">אינטרנט סיבים</option>
+      <option value="internet" data-i18n="svc_internet">אינטרנט</option>
+      <option value="tv" data-i18n="svc_tv">טלוויזיה וטריפל</option>
+      <option value="electricity" data-i18n="svc_electricity">חשמל</option>
+      <option value="all" data-i18n="svc_all">הכל</option>
+    </select>
+    <div id="serviceFields" style="display:none">
+    <div class="field-group" id="providerGroup" style="display:none">
+      <label class="field-label" for="currentProvider" data-i18n="current_provider">חברה נוכחית</label>
+      <select id="currentProvider">
+        <option value="" disabled selected>בחרו חברה</option>
+      </select>
+    </div>
+    <div class="field-group" id="otherProviderGroup" style="display:none">
+      <label class="field-label" for="otherProvider" data-i18n="company_name">שם החברה</label>
+      <input type="text" id="otherProvider" placeholder="הקלידו שם חברה" data-i18n-ph="ph_company_name">
+    </div>
+    <div class="field-group" id="linesGroup" style="display:none">
+      <label class="field-label" for="numLines" data-i18n="how_many_lines">כמה קווים יש לכם?</label>
+      <div class="lines-input-wrap">
+        <button type="button" class="lines-btn" onclick="changeLinesCount(-1)">−</button>
+        <input type="number" id="numLines" min="1" max="20" placeholder="1" value="1">
+        <button type="button" class="lines-btn" onclick="changeLinesCount(1)">+</button>
+      </div>
+    </div>
+    <div id="allProvidersGroup" style="display:none">
+      <div class="all-steps-indicator" id="allStepsIndicator">
+        <div class="all-step-item active" data-all-step="1">
+          <div class="all-step-dot">1</div>
+          <span class="all-step-label" data-i18n="svc_cellular">סלולר</span>
+        </div>
+        <div class="all-step-line"></div>
+        <div class="all-step-item" data-all-step="2">
+          <div class="all-step-dot">2</div>
+          <span class="all-step-label" data-i18n="svc_internet">אינטרנט</span>
+        </div>
+        <div class="all-step-line"></div>
+        <div class="all-step-item" data-all-step="3">
+          <div class="all-step-dot">3</div>
+          <span class="all-step-label" data-i18n="cat_tv_short">טלוויזיה</span>
+        </div>
+        <div class="all-step-line"></div>
+        <div class="all-step-item" data-all-step="4">
+          <div class="all-step-dot">4</div>
+          <span class="all-step-label" data-i18n="svc_electricity">חשמל</span>
+        </div>
+      </div>
+
+      <div class="savings-display" id="allSavingsDisplay" style="display:none">
+        <div class="savings-display-label" data-i18n="estimated_savings_yours">החיסכון המשוער שלכם</div>
+        <div class="savings-display-amount" id="allSavingsAmount">0 ₪<small> / חודש</small></div>
+        <div class="savings-display-year" id="allSavingsYear"></div>
+      </div>
+
+      <div class="all-step-panel active" data-all-panel="1">
+        <div class="field-group">
+          <label class="field-label" data-i18n="cellular_provider">סלולר - חברה נוכחית</label>
+          <select class="all-provider-select" data-cat="cellular"><option value="" disabled selected>בחרו חברה</option></select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="how_many_lines_short">כמה קווים?</label>
+          <div class="lines-input-wrap">
+            <button type="button" class="lines-btn" onclick="changeLinesCountAll(-1)">−</button>
+            <input type="number" id="allNumLines" min="1" max="20" placeholder="1" value="1">
+            <button type="button" class="lines-btn" onclick="changeLinesCountAll(1)">+</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="monthly_cellular">כמה משלמים בחודש על סלולר?</label>
+          <div class="price-input-wrap">
+            <input type="number" class="all-price-input" data-cat="cellular" placeholder="לדוגמא: 120" min="1" oninput="updateAllSavings()">
+            <span class="currency">₪</span>
+          </div>
+        </div>
+        <div class="all-step-nav">
+          <button class="btn btn-primary" onclick="nextAllStep()" data-i18n="next_internet">המשך לאינטרנט ←</button>
+        </div>
+      </div>
+
+      <div class="all-step-panel" data-all-panel="2">
+        <div class="field-group">
+          <label class="field-label" data-i18n="internet_provider">אינטרנט / סיבים - חברה נוכחית</label>
+          <select class="all-provider-select" data-cat="fiber"><option value="" disabled selected>בחרו חברה</option></select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="monthly_internet">כמה משלמים בחודש על אינטרנט?</label>
+          <div class="price-input-wrap">
+            <input type="number" class="all-price-input" data-cat="fiber" placeholder="לדוגמא: 100" min="1" oninput="updateAllSavings()">
+            <span class="currency">₪</span>
+          </div>
+        </div>
+        <div class="all-step-nav">
+          <button class="btn btn-back" onclick="prevAllStep()" data-i18n="back">חזרה →</button>
+          <button class="btn btn-primary" onclick="nextAllStep()" data-i18n="next_tv">המשך לטלוויזיה ←</button>
+        </div>
+      </div>
+
+      <div class="all-step-panel" data-all-panel="3">
+        <div class="field-group">
+          <label class="field-label" data-i18n="tv_provider">טלוויזיה - חברה נוכחית</label>
+          <select class="all-provider-select" data-cat="tv"><option value="" disabled selected>בחרו חברה</option></select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="monthly_tv">כמה משלמים בחודש על טלוויזיה?</label>
+          <div class="price-input-wrap">
+            <input type="number" class="all-price-input" data-cat="tv" placeholder="לדוגמא: 150" min="1" oninput="updateAllSavings()">
+            <span class="currency">₪</span>
+          </div>
+        </div>
+        <div class="all-step-nav">
+          <button class="btn btn-back" onclick="prevAllStep()" data-i18n="back">חזרה →</button>
+          <button class="btn btn-primary" onclick="nextAllStep()" data-i18n="next_electricity">המשך לחשמל ←</button>
+        </div>
+      </div>
+
+      <div class="all-step-panel" data-all-panel="4">
+        <div class="field-group">
+          <label class="field-label" data-i18n="electricity_provider">חשמל - חברה נוכחית</label>
+          <select class="all-provider-select" data-cat="electricity"><option value="" disabled selected>בחרו חברה</option></select>
+        </div>
+        <div class="field-group">
+          <label class="field-label" data-i18n="monthly_electricity">כמה משלמים בחודש על חשמל?</label>
+          <div class="price-input-wrap">
+            <input type="number" class="all-price-input" data-cat="electricity" placeholder="לדוגמא: 300" min="1" oninput="updateAllSavings(); updateElectricityDiscount()">
+            <span class="currency">₪</span>
+          </div>
+          <div id="electricityDiscountDisplay" class="electricity-discount" style="display:none;">
+            <span class="electricity-discount-icon">⚡</span>
+            <span data-i18n="estimated_discount_prefix">הנחה משוערת: </span><strong id="electricityDiscountAmount">0 ₪</strong><span data-i18n="per_month_suffix"> לחודש</span>
+          </div>
+        </div>
+        <div class="all-step-nav">
+          <button class="btn btn-back" onclick="prevAllStep()" data-i18n="back">חזרה →</button>
+          <button class="btn btn-primary" onclick="finishAllSteps()" data-i18n="show_full_savings">הראו לי את החיסכון המלא ←</button>
+        </div>
+      </div>
+    </div>
+    <div class="field-group" id="priceGroup">
+      <label class="field-label" for="currentPrice" id="priceLabel" data-i18n="monthly_pay">כמה אתם משלמים בחודש?</label>
+      <div class="price-input-wrap">
+        <input type="number" id="currentPrice" placeholder="לדוגמא: 120" min="1">
+        <span class="currency">&#8362;</span>
+      </div>
+      <div class="total-lines-calc" id="totalLinesCalc" style="display:none">
+        <span data-i18n="total_lines">סה״כ לכל הקווים:</span> <strong id="totalLinesAmount">0 ₪</strong> <span data-i18n="per_month_suffix">לחודש</span>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btnStep1" disabled onclick="goToStep(2)" data-i18n="show_savings">הראו לי כמה אני יכול לחסוך</button>
+    </div>
+  </div>
+
+  <!-- Step 2: Results -->
+  <div class="step" id="step2">
+    <div class="result-box" id="resultBox"></div>
+    <button class="btn btn-cta" onclick="goToStep(3)">
+      <span class="btn-cta-text" data-i18n="go_to_signup">מעבר להצטרפות</span>
+      <span class="btn-cta-sub" data-i18n="extra_benefit">ולהטבה נוספת מאיתנו</span>
+      <span class="btn-cta-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></span>
+    </button>
+    <button class="btn btn-secondary" onclick="goToStep(1)" data-i18n="back_to_edit">חזרה לשינוי פרטים</button>
+  </div>
+
+  <!-- Step 3: Contact -->
+  <div class="step" id="step3">
+    <h2 data-i18n="leave_details">השאירו פרטים ונחזור אליכם</h2>
+    <div class="contact-fields">
+      <div class="field-group">
+        <label class="field-label" for="fullName" data-i18n="full_name">שם מלא</label>
+        <input type="text" id="fullName" placeholder="ישראל ישראלי" pattern="^[a-zA-Zא-ת\s'\-]+$" data-i18n-ph="ph_full_name">
+        <span class="name-error" id="nameError" data-i18n="name_error">יש להזין אותיות בלבד, ללא מספרים או תווים מיוחדים</span>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="phone" data-i18n="phone">טלפון</label>
+        <input type="tel" id="phone" placeholder="050-0000000" dir="ltr" maxlength="11" pattern="^0(5[0-9]\d{7}|[2-9]\d{7})$">
+        <span class="phone-error" id="phoneError" data-i18n="phone_error">יש להזין מספר טלפון ישראלי תקין</span>
+      </div>
+    </div>
+    <label class="consent-label">
+      <input type="checkbox" id="consentCheck" onchange="validateStep3()">
+      <span data-i18n="consent_text">אני מסכים/ה ל<a href="javascript:void(0)" class="consent-link" onclick="event.preventDefault(); document.getElementById('consentDetails').classList.toggle('show');">תנאי השימוש</a></span>
+    </label>
+    <div class="consent-details" id="consentDetails">
+      <p data-i18n="consent_click">בלחיצה על "שלחו לי הצעה" אני מאשר/ת:</p>
+      <ul>
+        <li data-i18n="consent_1">קבלת הצעות מחיר לחבילות תקשורת</li>
+        <li data-i18n="consent_2">יצירת קשר טלפוני או בהודעה</li>
+        <li data-i18n="consent_3">שמירת הפרטים לצורך מתן השירות</li>
+      </ul>
+      <p data-i18n="consent_cancel">ניתן לבטל בכל עת בפנייה אלינו.</p>
+    </div>
+    <button class="btn btn-primary" id="btnSubmit" disabled onclick="submitLead()" data-i18n="send_offer">שלחו לי הצעה</button>
+    <button class="btn btn-secondary" onclick="goToStep(2)" data-i18n="back_to_results">חזרה לתוצאות</button>
+  </div>
+
+  <!-- Step 4: Success -->
+  <div class="step" id="step4">
+    <div class="success-check">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h2 data-i18n="success_title">הפרטים נשלחו בהצלחה!</h2>
+    <p style="text-align:center;color:var(--text-secondary);margin:0" data-i18n="success_sub">נציג שלנו יחזור אליכם בהקדם עם ההצעה המשתלמת ביותר.</p>
+  </div>
+</div>
+
+
+<div class="app-download-section">
+  <div class="app-dl-top">
+  <div class="app-dl-badges">
+    <a href="https://ping-win.co.il/invite?code=XRRBAS" target="_blank" rel="noopener" class="app-dl-badge">
+      <svg viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="app-dl-badge-text"><small>Download on the</small><strong>App Store</strong></div>
+    </a>
+    <a href="https://ping-win.co.il/invite?code=XRRBAS" target="_blank" rel="noopener" class="app-dl-badge">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M3.61 1.814L13.793 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734c0-.382.218-.72.61-.92z" fill="#4285F4"/><path d="M17.112 8.682L5.17.838l-.013-.007a.999.999 0 0 1 .998.003L17.112 8.682z" fill="#EA4335"/><path d="M3.61 22.186L17.112 15.318l-3.32-3.318L3.61 22.186z" fill="#34A853"/><path d="M20.997 10.652l-3.885-2.17L13.793 12l3.319 3.318 3.885-2.17a1.188 1.188 0 0 0 0-2.496z" fill="#FBBC04"/><path d="M5.17 23.162l11.942-7.844-3.319-3.318L5.17 23.162z" fill="#34A853"/><path d="M5.17.838L13.793 12l3.319-3.318L5.17.838z" fill="#EA4335"/></svg>
+      <div class="app-dl-badge-text"><small>GET IT ON</small><strong>Google Play</strong></div>
+    </a>
+  </div>
+  <div class="app-dl-text" data-i18n="app_dl_text">הורידו את <span>PingWin</span><br>וקבלו תגמול על כל חבילה!</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span data-i18n="footer">&copy; 2026 zolzolzol.co.il - כל הזכויות שמורות</span>
+</div>
+
+</div><!-- .page-content -->
+
+<!-- Bonus Modal -->
+<div class="modal-overlay" id="bonusModal">
+  <div class="modal">
+    <div class="modal-confetti" id="modalConfetti"></div>
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-body">
+      <div class="modal-success-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h3 data-i18n="modal_success">הפרטים נשלחו בהצלחה!</h3>
+      <img src="pingwin-logo-new.webp" alt="PingWin" class="modal-logo-img">
+      <p data-i18n="modal_reward_desc">על כל חבילת תקשורת שתצטרפו אליה דרכנו,<br>תקבלו תגמול של <strong>40 ₪</strong> לחבילה</p>
+      <div class="modal-reward-box">
+        <div class="modal-reward-label" data-i18n="total_reward">סה״כ תגמול שמגיע לכם</div>
+        <div class="modal-reward-amount" id="modalRewardAmount">40 ₪</div>
+        <div class="modal-reward-detail" id="modalRewardDetail"></div>
+      </div>
+      <div class="modal-perks">
+        <span class="modal-perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="perk_no_commit">ללא התחייבות</span>
+        </span>
+        <span class="modal-perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="perk_free">הרשמה בחינם</span>
+        </span>
+        <span class="modal-perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="perk_real_money">כסף אמיתי</span>
+        </span>
+      </div>
+      <p data-i18n="modal_download_cta">הורידו את האפליקציה וקבלו את התגמול!</p>
+      <a href="https://ping-win.co.il/invite?code=XRRBAS" target="_blank" rel="noopener" class="app-badge">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        <span data-i18n="download_pingwin">הורידו את PingWin</span>
+      </a>
+      <div class="modal-terms" data-i18n="modal_terms">*בכפוף לתקנון</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API_BASE = '/api/packages';
+const LEAD_URL = '/api/saveLead';
+let allPackages = [];
+let categoryPackages = [];
+
+const serviceEl = document.getElementById('serviceType');
+const providerEl = document.getElementById('currentProvider');
+const providerGroup = document.getElementById('providerGroup');
+const otherProviderGroup = document.getElementById('otherProviderGroup');
+const otherProviderEl = document.getElementById('otherProvider');
+const priceEl = document.getElementById('currentPrice');
+const numLinesEl = document.getElementById('numLines');
+const linesGroup = document.getElementById('linesGroup');
+const btnStep1 = document.getElementById('btnStep1');
+const fullNameEl = document.getElementById('fullName');
+const phoneEl = document.getElementById('phone');
+const btnSubmit = document.getElementById('btnSubmit');
+
+const companiesByCategory = {
+  cellular: ['סלקום', 'פרטנר', 'פלאפון', 'HOT', 'גולן טלקום', '012', 'רמי לוי', '019', 'WECOM', 'אחר'],
+  fiber: ['בזק', 'HOT', 'פרטנר', 'סלקום', 'IBC', 'אחר'],
+  internet: ['בזק', 'HOT', 'פרטנר', 'סלקום', 'אחר'],
+  tv: ['HOT', 'YES', 'בזק', 'סלקום', 'פרטנר', 'אחר'],
+  electricity: ['חברת החשמל', 'הוט', 'סלקום', 'פרטנר', 'בזק', 'אלקטרה', 'אחר']
+};
+
+async function fetchPackages(category) {
+  try {
+    const url = API_BASE + '?source=merged&lang=he&category=' + encodeURIComponent(category);
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('status ' + res.status);
+    const data = await res.json();
+    return data.packages || [];
+  } catch (e) {
+    return null;
+  }
+}
+
+function getRegularPrice(pkg) {
+  const raw = pkg.additional_details_raw || '';
+  const patterns = [
+    /לאחר\s*(?:מכן|שנתיים|שנה)[^0-9]*?(\d+(?:\.\d+)?)\s*ש/,
+    /מחודש\s*\d+[:\s–-]*(\d+(?:\.\d+)?)\s*ש/,
+    /ולאחר\s*מכן\s*[–-]?\s*(\d+(?:\.\d+)?)/
+  ];
+  for (const p of patterns) {
+    const m = raw.match(p);
+    if (m) return parseFloat(m[1]);
+  }
+  return null;
+}
+
+function buildDetails(pkg) {
+  const parts = [];
+  if (pkg.data_gb) parts.push(pkg.data_gb + ' גלישה');
+  if (pkg.call_minutes) parts.push(pkg.call_minutes + ' דקות');
+  if (pkg.sms_messages) parts.push(pkg.sms_messages + ' SMS');
+  if (pkg.package_type) parts.push(pkg.package_type);
+  if (pkg.download_speed) parts.push('מהירות: ' + pkg.download_speed);
+  if (pkg.upload_speed) parts.push('העלאה: ' + pkg.upload_speed);
+  if (pkg.router_included) parts.push(pkg.router_included);
+  if (pkg.whats_included) parts.push(pkg.whats_included);
+  if (pkg.discount_percent) parts.push('הנחה: ' + pkg.discount_percent);
+  if (pkg.benefit) parts.push(pkg.benefit);
+  if (parts.length === 0 && pkg.additional_details) {
+    const raw = pkg.additional_details.replace(/\n/g, ' ').substring(0, 120);
+    parts.push(raw);
+  }
+  return parts.join(' | ') || pkg.name;
+}
+
+function selectService(card) {
+  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  serviceEl.value = card.dataset.value;
+  serviceEl.dispatchEvent(new Event('change'));
+}
+
+const allProvidersGroup = document.getElementById('allProvidersGroup');
+const priceLabel = document.getElementById('priceLabel');
+const priceGroup = document.getElementById('priceGroup');
+
+const serviceFields = document.getElementById('serviceFields');
+
+let allCurrentStep = 1;
+const allSavingsRates = { cellular: 0.22, fiber: 0.18, tv: 0.16, electricity: 0.20 };
+
+serviceEl.addEventListener('change', () => {
+  const svc = serviceEl.value;
+  const isAll = svc === 'all';
+  const isCellular = svc === 'cellular';
+  linesGroup.style.display = isCellular ? '' : 'none';
+  otherProviderGroup.style.display = 'none';
+  otherProviderEl.value = '';
+  allProvidersGroup.style.display = isAll ? '' : 'none';
+  priceGroup.style.display = isAll ? 'none' : '';
+  btnStep1.style.display = isAll ? 'none' : '';
+  priceLabel.textContent = isCellular ? t('monthly_pay_per_line') : t('monthly_pay');
+  document.getElementById('totalLinesCalc').style.display = 'none';
+
+  if (!svc) {
+    providerGroup.style.display = 'none';
+    serviceFields.style.display = 'none';
+    return;
+  }
+
+  serviceFields.style.display = '';
+
+  if (isAll) {
+    providerGroup.style.display = 'none';
+    allCurrentStep = 1;
+    updateAllStepsUI();
+    document.getElementById('allSavingsDisplay').style.display = 'none';
+    document.querySelectorAll('.all-provider-select').forEach(sel => {
+      const cat = sel.dataset.cat;
+      const companies = companiesByCategory[cat] || ['אחר'];
+      sel.innerHTML = '<option value="" disabled selected>' + t('choose_company') + '</option>';
+      companies.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c;
+        opt.textContent = c;
+        sel.appendChild(opt);
+      });
+    });
+    document.querySelectorAll('.all-price-input').forEach(inp => { inp.value = ''; });
+    document.getElementById('allNumLines').value = '1';
+  } else {
+    const companies = companiesByCategory[svc] || ['אחר'];
+    providerEl.innerHTML = '<option value="" disabled selected>' + t('choose_company') + '</option>';
+    companies.forEach(c => {
+      const opt = document.createElement('option');
+      opt.value = c;
+      opt.textContent = c;
+      providerEl.appendChild(opt);
+    });
+    providerGroup.style.display = '';
+  }
+  validateStep1();
+  setTimeout(() => {
+    serviceFields.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+});
+
+providerEl.addEventListener('change', () => {
+  if (providerEl.value === 'אחר') {
+    otherProviderGroup.style.display = '';
+  } else {
+    otherProviderGroup.style.display = 'none';
+    otherProviderEl.value = '';
+  }
+  validateStep1();
+});
+
+otherProviderEl.addEventListener('input', validateStep1);
+priceEl.addEventListener('input', function() { validateStep1(); updateTotalLinesCalc(); });
+numLinesEl.addEventListener('input', function() { validateStep1(); updateTotalLinesCalc(); });
+
+function changeLinesCount(delta) {
+  const current = parseInt(numLinesEl.value) || 0;
+  const next = Math.max(1, current + delta);
+  numLinesEl.value = next;
+  validateStep1();
+  updateTotalLinesCalc();
+}
+
+function updateTotalLinesCalc() {
+  const calc = document.getElementById('totalLinesCalc');
+  if (serviceEl.value !== 'cellular') { calc.style.display = 'none'; return; }
+  const lines = parseInt(numLinesEl.value) || 1;
+  const pricePerLine = parseInt(priceEl.value) || 0;
+  if (pricePerLine > 0 && lines > 1) {
+    const total = pricePerLine * lines;
+    document.getElementById('totalLinesAmount').textContent = total + ' ₪';
+    calc.style.display = '';
+  } else {
+    calc.style.display = 'none';
+  }
+}
+
+function changeLinesCountAll(delta) {
+  const el = document.getElementById('allNumLines');
+  const current = parseInt(el.value) || 0;
+  const next = Math.max(1, current + delta);
+  el.value = next;
+}
+document.getElementById('allNumLines').addEventListener('input', () => {});
+
+function updateAllStepsUI() {
+  document.querySelectorAll('.all-step-item').forEach((item, i) => {
+    const step = i + 1;
+    item.classList.remove('active', 'done');
+    if (step === allCurrentStep) item.classList.add('active');
+    else if (step < allCurrentStep) item.classList.add('done');
+  });
+  document.querySelectorAll('.all-step-line').forEach((line, i) => {
+    line.classList.toggle('done', i + 1 < allCurrentStep);
+  });
+  document.querySelectorAll('.all-step-panel').forEach(panel => {
+    panel.classList.remove('active');
+    if (parseInt(panel.dataset.allPanel) === allCurrentStep) panel.classList.add('active');
+  });
+}
+
+function updateElectricityDiscount() {
+  const inp = document.querySelector('.all-price-input[data-cat="electricity"]');
+  const display = document.getElementById('electricityDiscountDisplay');
+  const amountEl = document.getElementById('electricityDiscountAmount');
+  const price = parseInt(inp.value) || 0;
+  if (price > 0) {
+    const discount = Math.round(price * 0.20);
+    amountEl.textContent = discount + ' ₪';
+    display.style.display = '';
+  } else {
+    display.style.display = 'none';
+  }
+}
+
+function calculateAllSavings() {
+  let totalSavings = 0;
+  document.querySelectorAll('.all-price-input').forEach(inp => {
+    const price = parseInt(inp.value) || 0;
+    const cat = inp.dataset.cat;
+    const rate = allSavingsRates[cat] || 0.15;
+    totalSavings += Math.round(price * rate);
+  });
+  return totalSavings;
+}
+
+function updateAllSavings() {
+  const savings = calculateAllSavings();
+  const display = document.getElementById('allSavingsDisplay');
+  if (savings > 0) {
+    display.style.display = '';
+    document.getElementById('allSavingsAmount').innerHTML = savings + ' ₪<small> / ' + t('per_month_suffix').trim() + '</small>';
+    document.getElementById('allSavingsYear').textContent = t('about') + (savings * 12) + t('per_year');
+  } else {
+    display.style.display = 'none';
+  }
+}
+
+function nextAllStep() {
+  const panel = document.querySelector('.all-step-panel[data-all-panel="' + allCurrentStep + '"]');
+  const provider = panel.querySelector('.all-provider-select');
+  const price = panel.querySelector('.all-price-input');
+  if (provider && !provider.value) { provider.focus(); return; }
+  if (price && (!price.value || parseInt(price.value) <= 0)) { price.focus(); return; }
+  if (allCurrentStep === 1) {
+    const lines = document.getElementById('allNumLines');
+    if (!lines.value || parseInt(lines.value) < 1) { lines.focus(); return; }
+  }
+  allCurrentStep++;
+  updateAllStepsUI();
+  updateAllSavings();
+}
+
+function prevAllStep() {
+  if (allCurrentStep > 1) {
+    allCurrentStep--;
+    updateAllStepsUI();
+  }
+}
+
+function finishAllSteps() {
+  const panel = document.querySelector('.all-step-panel[data-all-panel="4"]');
+  const provider = panel.querySelector('.all-provider-select');
+  const price = panel.querySelector('.all-price-input');
+  if (provider && !provider.value) { provider.focus(); return; }
+  if (price && (!price.value || parseInt(price.value) <= 0)) { price.focus(); return; }
+
+  const savings = calculateAllSavings();
+  let totalPrice = 0;
+  document.querySelectorAll('.all-price-input').forEach(inp => {
+    totalPrice += parseInt(inp.value) || 0;
+  });
+  priceEl.value = totalPrice;
+
+  buildAllResult(totalPrice, savings);
+}
+
+function getProviderName() {
+  return providerEl.value === 'אחר' ? otherProviderEl.value.trim() : providerEl.value;
+}
+
+function validateStep1() {
+  const svc = serviceEl.value;
+  if (svc === 'all') {
+    return;
+  }
+  const hasPrice = priceEl.value && parseInt(priceEl.value) > 0;
+  const hasProvider = providerEl.value && (providerEl.value !== 'אחר' || otherProviderEl.value.trim().length >= 2);
+  const isCellular = svc === 'cellular';
+  const hasLines = !isCellular || (numLinesEl.value && parseInt(numLinesEl.value) >= 1);
+  btnStep1.disabled = !(svc && hasProvider && hasLines && hasPrice);
+}
+
+fullNameEl.addEventListener('input', validateStep3);
+phoneEl.addEventListener('input', validateStep3);
+
+function validateStep3() {
+  const nameVal = fullNameEl.value.trim();
+  const nameOk = nameVal.length >= 2 && /^[a-zA-Zא-ת֐-׿؀-ۿЀ-ӿ\s'"\-]+$/.test(nameVal);
+  const cleanPhone = phoneEl.value.replace(/[\s\-]/g, '');
+  const phoneOk = /^05[0-9]\d{7}$/.test(cleanPhone) || /^0[2-9]\d{7}$/.test(cleanPhone);
+  const consentOk = document.getElementById('consentCheck').checked;
+  const phoneErr = document.getElementById('phoneError');
+  const nameErr = document.getElementById('nameError');
+  if (cleanPhone.length > 0 && !phoneOk) { phoneErr.classList.add('show'); } else { phoneErr.classList.remove('show'); }
+  if (nameVal.length > 0 && !nameOk) { nameErr.classList.add('show'); } else { nameErr.classList.remove('show'); }
+  btnSubmit.disabled = !(nameOk && phoneOk && consentOk);
+}
+
+async function goToStep(n) {
+  if (n === 2) {
+    btnStep1.disabled = true;
+    btnStep1.textContent = t('searching');
+    await buildResult();
+    btnStep1.textContent = t('show_savings');
+    validateStep1();
+  }
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 === n) d.classList.add('active');
+    else if (i + 1 < n) d.classList.add('done');
+  });
+  document.querySelectorAll('.step-line').forEach((line, i) => {
+    line.classList.toggle('done', i + 1 < n);
+  });
+}
+
+function isDataOnly(pkg) {
+  if (!pkg.call_minutes) return true;
+  const name = (pkg.name || '').toLowerCase();
+  return name.includes('דאטה') || name.includes('data only') || name.includes('data');
+}
+
+async function buildResult() {
+  const provider = getProviderName();
+  const price = parseInt(priceEl.value);
+
+  if (serviceEl.value === 'electricity') {
+    const discount = Math.round(price * 0.20);
+    const newPrice = price - discount;
+    const yearSavings = discount * 12;
+    const box = document.getElementById('resultBox');
+    box.innerHTML = `
+      <div class="savings-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        ${t('found_electricity_discount')}
+      </div>
+      <div class="result-summary">
+        <p class="result-summary-label">${t('estimated_discount_20')}</p>
+        <p class="result-price">${newPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+        <p class="result-summary-compare">${t('instead_of')} ${price} ₪ ${t('you_pay_today')}</p>
+      </div>
+      <div class="savings-breakdown">
+        <div class="savings-item">
+          <span class="savings-item-amount">${discount} &#8362;</span>
+          <span class="savings-item-label">${t('savings_month')}</span>
+        </div>
+        <div class="savings-divider"></div>
+        <div class="savings-item">
+          <span class="savings-item-amount">${yearSavings} &#8362;</span>
+          <span class="savings-item-label">${t('savings_year')}</span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const isCellular = serviceEl.value === 'cellular';
+  const numLines = isCellular ? parseInt(numLinesEl.value) : 1;
+  const pricePerLine = price / numLines;
+
+  if (isCellular && pricePerLine > 30) {
+    const bestPrice = 29.90;
+    const totalNewPrice = Math.round(bestPrice * numLines * 100) / 100;
+    const savings = Math.round(price - totalNewPrice);
+    const yearSavings = Math.round(savings * 12);
+    const box = document.getElementById('resultBox');
+    const linesNote = numLines > 1 ? ` (${numLines}${t('lines_suffix')})` : '';
+    box.innerHTML = `
+      <div class="savings-badge">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        ${t('found_cheaper')}
+      </div>
+      <div class="result-summary">
+        <p class="result-summary-label">${t('cheapest_found')}${linesNote}</p>
+        <p class="result-price">${totalNewPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+        <p class="result-summary-compare">${t('instead_of')} ${price} ₪ ${t('you_pay_today')}</p>
+      </div>
+      <div class="savings-breakdown">
+        <div class="savings-item">
+          <span class="savings-item-amount">${savings} &#8362;</span>
+          <span class="savings-item-label">${t('savings_month')}</span>
+        </div>
+        <div class="savings-divider"></div>
+        <div class="savings-item">
+          <span class="savings-item-amount">${yearSavings} &#8362;</span>
+          <span class="savings-item-label">${t('savings_year')}</span>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  categoryPackages = await fetchPackages(serviceEl.value) || [];
+
+  let validPkgs = categoryPackages.filter(p => p.price && p.price >= 25);
+
+  if (isCellular) {
+    const excludedCompanies = ['019', 'רמי לוי'];
+    validPkgs = validPkgs.filter(p =>
+      !excludedCompanies.includes(p.company) &&
+      p.company !== provider &&
+      p.package_type !== 'כשר' &&
+      !(p.name || '').includes('כשר') &&
+      !isDataOnly(p)
+    );
+  } else {
+    validPkgs = validPkgs.filter(p => p.company !== provider);
+  }
+
+  const cheaper = validPkgs.filter(p => p.price < pricePerLine).sort((a, b) => a.price - b.price);
+  const best = cheaper.length > 0 ? cheaper[0] : validPkgs.sort((a, b) => a.price - b.price)[0];
+
+  if (!best) {
+    document.getElementById('resultBox').innerHTML = '<p style="text-align:center;color:var(--text-secondary)">' + t('no_packages') + '</p>';
+    return;
+  }
+
+  const totalNewPrice = best.price * numLines;
+  const details = buildDetails(best);
+  const box = document.getElementById('resultBox');
+  const linesNote = numLines > 1 ? ` (${numLines}${t('lines_suffix')})` : '';
+  const perLineNote = numLines > 1 ? `<small> לקו</small>` : '';
+
+  if (isCellular) {
+    const savings = price - totalNewPrice;
+    const yearSavings = savings * 12;
+    if (savings > 0) {
+      box.innerHTML = `
+        <div class="savings-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          ${t('found_cheaper')}
+        </div>
+        <div class="result-summary">
+          <p class="result-summary-label">${t('cheapest_found')}${linesNote}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+          <p class="result-summary-compare">${t('instead_of')} ${price} ₪ ${t('you_pay_today')}</p>
+        </div>
+        <div class="savings-breakdown">
+          <div class="savings-item">
+            <span class="savings-item-amount">${savings} &#8362;</span>
+            <span class="savings-item-label">${t('savings_month')}</span>
+          </div>
+          <div class="savings-divider"></div>
+          <div class="savings-item">
+            <span class="savings-item-amount">${yearSavings} &#8362;</span>
+            <span class="savings-item-label">${t('savings_year')}</span>
+          </div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `
+        <div class="result-summary">
+          <p class="result-summary-label">${t('cheapest_found')}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+          <p class="result-summary-compare">${t('good_price')}</p>
+        </div>
+      `;
+    }
+  } else {
+    const regularPerLine = getRegularPrice(best);
+    const regularTotal = regularPerLine ? Math.round(regularPerLine * 100) / 100 : null;
+    const weightedPrice = regularTotal
+      ? Math.round((best.price * 0.3 + regularTotal * 0.7) * 100) / 100
+      : Math.round(best.price * 1.15 * 100) / 100;
+    const estimatedSavings = Math.max(0, Math.round(price - weightedPrice));
+    const estimatedYearSavings = estimatedSavings * 12;
+    const promoNote = `<p class="result-promo-note">${t('promo_note')}${regularTotal ? t('after_promo') + regularTotal + t('per_month') : ''}</p>`;
+
+    if (best.price < price) {
+      box.innerHTML = `
+        <div class="savings-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          ${t('found_cheaper')}
+        </div>
+        <div class="result-summary">
+          <p class="result-summary-label">${t('cheapest_found')}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+          ${promoNote}
+          <p class="result-summary-compare">${t('instead_of')} ${price} ₪ ${t('you_pay_today')}</p>
+        </div>
+        <div class="savings-breakdown">
+          <div class="savings-item">
+            <span class="savings-item-amount">${estimatedSavings} &#8362;</span>
+            <span class="savings-item-label">${t('savings_est_month')}</span>
+          </div>
+          <div class="savings-divider"></div>
+          <div class="savings-item">
+            <span class="savings-item-amount">${estimatedYearSavings} &#8362;</span>
+            <span class="savings-item-label">${t('savings_est_year')}</span>
+          </div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `
+        <div class="result-summary">
+          <p class="result-summary-label">${t('cheapest_found')}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+          ${promoNote}
+          <p class="result-summary-compare">${t('good_price')}</p>
+        </div>
+      `;
+    }
+  }
+}
+
+function buildAllResult(totalPrice, monthlySavings) {
+  const yearSavings = monthlySavings * 12;
+  const newPrice = totalPrice - monthlySavings;
+  const box = document.getElementById('resultBox');
+  const breakdown = [];
+  document.querySelectorAll('.all-price-input').forEach(inp => {
+    const cat = inp.dataset.cat;
+    const price = parseInt(inp.value) || 0;
+    const rate = allSavingsRates[cat] || 0.15;
+    const catSavings = Math.round(price * rate);
+    const labels = t('cat_labels');
+    if (price > 0) breakdown.push({ label: labels[cat], price, savings: catSavings });
+  });
+
+  let breakdownHtml = breakdown.map(b =>
+    `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--divider);">
+      <span style="color:var(--text-secondary);font-size:0.9rem;">${b.label}: ${b.price} ₪</span>
+      <span style="color:var(--green-dark);font-weight:700;font-size:0.9rem;">${t('savings_prefix')}${b.savings} ₪</span>
+    </div>`
+  ).join('');
+
+  box.innerHTML = `
+    <div class="savings-badge">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      ${t('found_all_savings')}
+    </div>
+    <div class="result-summary">
+      <p class="result-summary-label">${t('total_est_savings')}</p>
+      <p class="result-price">${monthlySavings} &#8362;<small> / ${t('per_month_suffix').trim()}</small></p>
+      <p class="result-promo-note">${t('promo_first_months')}</p>
+      <p class="result-summary-compare">${t('instead_of')} ${totalPrice} ₪ ${t('instead_pay')}${newPrice} ₪</p>
+    </div>
+    <div style="margin:16px 0;padding:12px 16px;border-radius:14px;background:rgba(250,245,248,0.8);border:1px solid var(--divider);">
+      ${breakdownHtml}
+    </div>
+    <div class="savings-breakdown">
+      <div class="savings-item">
+        <span class="savings-item-amount">${monthlySavings} &#8362;</span>
+        <span class="savings-item-label">${t('savings_est_month')}</span>
+      </div>
+      <div class="savings-divider"></div>
+      <div class="savings-item">
+        <span class="savings-item-amount">${yearSavings} &#8362;</span>
+        <span class="savings-item-label">${t('savings_est_year')}</span>
+      </div>
+    </div>
+  `;
+
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step2').classList.add('active');
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.remove('active', 'done');
+    if (i + 1 === 2) d.classList.add('active');
+    else if (i + 1 < 2) d.classList.add('done');
+  });
+  document.querySelectorAll('.step-line').forEach((line, i) => {
+    line.classList.toggle('done', i + 1 < 2);
+  });
+}
+
+function submitLead() {
+  const name = fullNameEl.value.trim();
+  const phone = phoneEl.value.replace(/[\s\-]/g, '');
+
+  fetch(LEAD_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      tracking: serviceEl.value === 'all' ? {
+        source: 'landing-page',
+        service: 'all',
+        providers: Object.fromEntries(Array.from(document.querySelectorAll('.all-provider-select')).map(s => [s.dataset.cat, s.value])),
+        prices: Object.fromEntries(Array.from(document.querySelectorAll('.all-price-input')).map(inp => [inp.dataset.cat, inp.value])),
+        lines: document.getElementById('allNumLines').value,
+        totalPrice: priceEl.value,
+        estimatedSavings: calculateAllSavings()
+      } : {
+        source: 'landing-page',
+        service: serviceEl.value,
+        provider: getProviderName(),
+        price: priceEl.value,
+        lines: numLinesEl.value
+      }
+    })
+  }).catch(() => {});
+
+  goToStep(4);
+
+  let numPackages = 1;
+  if (serviceEl.value === 'all') {
+    numPackages = document.querySelectorAll('.all-price-input').length;
+  } else if (serviceEl.value === 'cellular') {
+    numPackages = parseInt(numLinesEl.value) || 1;
+  }
+  const perPackage = 40;
+  const totalReward = perPackage * numPackages;
+  document.getElementById('modalRewardAmount').textContent = totalReward + ' ₪';
+  const detailEl = document.getElementById('modalRewardDetail');
+  if (numPackages > 1) {
+    detailEl.textContent = numPackages + t('packages_suffix') + perPackage + ' ₪';
+  } else {
+    detailEl.textContent = '';
+  }
+
+  setTimeout(() => {
+    document.getElementById('bonusModal').classList.add('show');
+    spawnConfetti();
+  }, 1200);
+}
+
+function spawnConfetti() {
+  const container = document.getElementById('modalConfetti');
+  container.innerHTML = '';
+  const colors = ['#ee117a', '#ff6ec7', '#8b5cf6', '#34d399', '#fbbf24', '#60a5fa'];
+  for (let i = 0; i < 30; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + '%';
+    piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.animationDelay = Math.random() * 1.5 + 's';
+    piece.style.animationDuration = (2 + Math.random() * 2) + 's';
+    piece.style.width = (5 + Math.random() * 6) + 'px';
+    piece.style.height = (5 + Math.random() * 6) + 'px';
+    container.appendChild(piece);
+  }
+}
+
+function closeModal() {
+  document.getElementById('bonusModal').classList.remove('show');
+}
+
+document.getElementById('bonusModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+let currentLang = 'he';
+
+const translations = {
+  he: {
+    hero_title: 'גלו כמה אתם יכולים <span class="accent">לחסוך</span> בחשבון התקשורת',
+    hero_sub: 'מלאו את הפרטים ונמצא לכם את החבילה הכי משתלמת בשוק',
+    step_compare: 'משווים',
+    step_save: 'חוסכים',
+    step_switch: 'עוברים',
+    step1_title: 'מה החבילה הנוכחית שלכם?',
+    choose_service: 'בחרו סוג שירות',
+    svc_cellular: 'סלולר',
+    svc_fiber: 'סיבים אופטיים',
+    svc_fiber_short: 'אינטרנט סיבים',
+    svc_internet: 'אינטרנט',
+    svc_tv: 'טלוויזיה וטריפל',
+    svc_electricity: 'חשמל',
+    svc_all: 'הכל',
+    cat_tv_short: 'טלוויזיה',
+    current_provider: 'חברה נוכחית',
+    company_name: 'שם החברה',
+    ph_company_name: 'הקלידו שם חברה',
+    how_many_lines: 'כמה קווים יש לכם?',
+    how_many_lines_short: 'כמה קווים?',
+    monthly_cellular: 'כמה משלמים בחודש על סלולר?',
+    monthly_internet: 'כמה משלמים בחודש על אינטרנט?',
+    monthly_tv: 'כמה משלמים בחודש על טלוויזיה?',
+    monthly_electricity: 'כמה משלמים בחודש על חשמל?',
+    monthly_pay: 'כמה אתם משלמים בחודש?',
+    monthly_pay_per_line: 'כמה משלמים לכל קו?',
+    cellular_provider: 'סלולר - חברה נוכחית',
+    internet_provider: 'אינטרנט / סיבים - חברה נוכחית',
+    tv_provider: 'טלוויזיה - חברה נוכחית',
+    electricity_provider: 'חשמל - חברה נוכחית',
+    estimated_savings_yours: 'החיסכון המשוער שלכם',
+    estimated_discount_prefix: 'הנחה משוערת: ',
+    per_month_suffix: ' לחודש',
+    next_internet: 'המשך לאינטרנט ←',
+    next_tv: 'המשך לטלוויזיה ←',
+    next_electricity: 'המשך לחשמל ←',
+    back: 'חזרה →',
+    show_full_savings: 'הראו לי את החיסכון המלא ←',
+    total_lines: 'סה״כ לכל הקווים:',
+    show_savings: 'הראו לי כמה אני יכול לחסוך',
+    searching: 'מחפש חבילות...',
+    go_to_signup: 'מעבר להצטרפות',
+    extra_benefit: 'ולהטבה נוספת מאיתנו',
+    back_to_edit: 'חזרה לשינוי פרטים',
+    leave_details: 'השאירו פרטים ונחזור אליכם',
+    full_name: 'שם מלא',
+    ph_full_name: 'ישראל ישראלי',
+    phone: 'טלפון',
+    name_error: 'יש להזין אותיות בלבד, ללא מספרים או תווים מיוחדים',
+    phone_error: 'יש להזין מספר טלפון ישראלי תקין',
+    consent_text: 'אני מסכים/ה ל<a href="javascript:void(0)" class="consent-link" onclick="event.preventDefault(); document.getElementById(\'consentDetails\').classList.toggle(\'show\');">תנאי השימוש</a>',
+    consent_click: 'בלחיצה על "שלחו לי הצעה" אני מאשר/ת:',
+    consent_1: 'קבלת הצעות מחיר לחבילות תקשורת',
+    consent_2: 'יצירת קשר טלפוני או בהודעה',
+    consent_3: 'שמירת הפרטים לצורך מתן השירות',
+    consent_cancel: 'ניתן לבטל בכל עת בפנייה אלינו.',
+    send_offer: 'שלחו לי הצעה',
+    back_to_results: 'חזרה לתוצאות',
+    success_title: 'הפרטים נשלחו בהצלחה!',
+    success_sub: 'נציג שלנו יחזור אליכם בהקדם עם ההצעה המשתלמת ביותר.',
+    app_dl_text: 'הורידו את <span>PingWin</span><br>וקבלו תגמול על כל חבילה!',
+    footer: '&copy; 2026 zolzolzol.co.il - כל הזכויות שמורות',
+    modal_success: 'הפרטים נשלחו בהצלחה!',
+    modal_reward_desc: 'על כל חבילת תקשורת שתצטרפו אליה דרכנו,<br>תקבלו תגמול של <strong>40 ₪</strong> לחבילה',
+    total_reward: 'סה״כ תגמול שמגיע לכם',
+    perk_no_commit: 'ללא התחייבות',
+    perk_free: 'הרשמה בחינם',
+    perk_real_money: 'כסף אמיתי',
+    modal_download_cta: 'הורידו את האפליקציה וקבלו את התגמול!',
+    download_pingwin: 'הורידו את PingWin',
+    modal_terms: '*בכפוף לתקנון',
+    choose_company: 'בחרו חברה',
+    other: 'אחר',
+    found_cheaper: 'מצאנו לכם חבילה זולה יותר!',
+    found_electricity_discount: 'מצאנו לכם הנחה על חשמל!',
+    found_all_savings: 'מצאנו לכם חיסכון על כל השירותים!',
+    estimated_discount_20: 'הנחה משוערת של 20%',
+    instead_of: 'במקום',
+    you_pay_today: 'שאתם משלמים היום',
+    savings_month: 'חיסכון בחודש',
+    savings_year: 'חיסכון בשנה',
+    savings_est_month: 'חיסכון משוער בחודש',
+    savings_est_year: 'חיסכון משוער בשנה',
+    cheapest_found: 'המחיר הזול ביותר שמצאנו',
+    no_packages: 'לא נמצאו חבילות מתאימות בקטגוריה זו. נשמח לבדוק עבורכם!',
+    good_price: 'אתם כבר במחיר טוב! אבל נשמח לבדוק עבורכם אם יש הצעה טובה יותר.',
+    promo_note: '* מחיר מבצע לחודשים הראשונים',
+    after_promo: ', לאחר מכן ',
+    per_month: ' ₪ לחודש',
+    lines_suffix: ' קווים',
+    total_est_savings: 'החיסכון הכולל המשוער',
+    promo_first_months: '* מחירי מבצע לחודשים הראשונים',
+    instead_pay: 'תשלמו כ-',
+    about: 'כ-',
+    per_year: ' ₪ בשנה!',
+    cat_labels: { cellular: 'סלולר', fiber: 'אינטרנט', tv: 'טלוויזיה', electricity: 'חשמל' },
+    savings_prefix: 'חיסכון ',
+    packages_suffix: ' חבילות × '
+  },
+  ar: {
+    hero_title: 'اكتشفوا كم يمكنكم <span class="accent">توفيره</span> في فاتورة الاتصالات',
+    hero_sub: 'املأوا التفاصيل وسنجد لكم الباقة الأكثر توفيرًا في السوق',
+    step_compare: 'نقارن',
+    step_save: 'نوفّر',
+    step_switch: 'ننتقل',
+    step1_title: 'ما هي باقتكم الحالية؟',
+    choose_service: 'اختاروا نوع الخدمة',
+    svc_cellular: 'خلوي',
+    svc_fiber: 'ألياف بصرية',
+    svc_fiber_short: 'إنترنت ألياف',
+    svc_internet: 'إنترنت',
+    svc_tv: 'تلفزيون وتريبل',
+    svc_electricity: 'كهرباء',
+    svc_all: 'الكل',
+    cat_tv_short: 'تلفزيون',
+    current_provider: 'الشركة الحالية',
+    company_name: 'اسم الشركة',
+    ph_company_name: 'اكتبوا اسم الشركة',
+    how_many_lines: 'كم خطًا لديكم؟',
+    how_many_lines_short: 'كم خطًا؟',
+    monthly_cellular: 'كم تدفعون شهريًا على الخلوي؟',
+    monthly_internet: 'كم تدفعون شهريًا على الإنترنت؟',
+    monthly_tv: 'كم تدفعون شهريًا على التلفزيون؟',
+    monthly_electricity: 'كم تدفعون شهريًا على الكهرباء؟',
+    monthly_pay: 'كم تدفعون شهريًا؟',
+    monthly_pay_per_line: 'كم تدفعون لكل خط؟',
+    cellular_provider: 'خلوي - الشركة الحالية',
+    internet_provider: 'إنترنت / ألياف - الشركة الحالية',
+    tv_provider: 'تلفزيون - الشركة الحالية',
+    electricity_provider: 'كهرباء - الشركة الحالية',
+    estimated_savings_yours: 'التوفير المقدّر لكم',
+    estimated_discount_prefix: 'خصم تقديري: ',
+    per_month_suffix: ' شهريًا',
+    next_internet: '← التالي: إنترنت',
+    next_tv: '← التالي: تلفزيون',
+    next_electricity: '← التالي: كهرباء',
+    back: '→ رجوع',
+    show_full_savings: '← أظهروا لي التوفير الكامل',
+    total_lines: 'المجموع لكل الخطوط:',
+    show_savings: 'أظهروا لي كم يمكنني التوفير',
+    searching: 'جاري البحث عن باقات...',
+    go_to_signup: 'الانتقال للتسجيل',
+    extra_benefit: 'ومزايا إضافية منّا',
+    back_to_edit: 'رجوع لتعديل التفاصيل',
+    leave_details: 'اتركوا تفاصيلكم وسنعود إليكم',
+    full_name: 'الاسم الكامل',
+    ph_full_name: 'الاسم الكامل',
+    phone: 'هاتف',
+    name_error: 'يجب إدخال حروف فقط، بدون أرقام أو رموز خاصة',
+    phone_error: 'يجب إدخال رقم هاتف إسرائيلي صحيح',
+    consent_text: 'أوافق على <a href="javascript:void(0)" class="consent-link" onclick="event.preventDefault(); document.getElementById(\'consentDetails\').classList.toggle(\'show\');">شروط الاستخدام</a>',
+    consent_click: 'بالضغط على "أرسلوا لي عرضًا" أوافق على:',
+    consent_1: 'استلام عروض أسعار لباقات الاتصالات',
+    consent_2: 'التواصل عبر الهاتف أو الرسائل',
+    consent_3: 'حفظ التفاصيل لغرض تقديم الخدمة',
+    consent_cancel: 'يمكن الإلغاء في أي وقت بالتواصل معنا.',
+    send_offer: 'أرسلوا لي عرضًا',
+    back_to_results: 'رجوع للنتائج',
+    success_title: 'تم إرسال التفاصيل بنجاح!',
+    success_sub: 'سيتواصل معكم ممثلنا قريبًا مع العرض الأفضل.',
+    app_dl_text: 'حمّلوا تطبيق <span>PingWin</span><br>واحصلوا على مكافأة عن كل باقة!',
+    footer: '&copy; 2026 zolzolzol.co.il - جميع الحقوق محفوظة',
+    modal_success: 'تم إرسال التفاصيل بنجاح!',
+    modal_reward_desc: 'عن كل باقة اتصالات تنضمون إليها من خلالنا،<br>تحصلون على مكافأة <strong>40 ₪</strong> للباقة',
+    total_reward: 'مجموع المكافأة المستحقة لكم',
+    perk_no_commit: 'بدون التزام',
+    perk_free: 'تسجيل مجاني',
+    perk_real_money: 'أموال حقيقية',
+    modal_download_cta: 'حمّلوا التطبيق واحصلوا على المكافأة!',
+    download_pingwin: 'حمّلوا PingWin',
+    modal_terms: '*وفقًا للشروط والأحكام',
+    choose_company: 'اختاروا شركة',
+    other: 'أخرى',
+    found_cheaper: 'وجدنا لكم باقة أرخص!',
+    found_electricity_discount: 'وجدنا لكم خصمًا على الكهرباء!',
+    found_all_savings: 'وجدنا لكم توفيرًا على جميع الخدمات!',
+    estimated_discount_20: 'خصم تقديري 20%',
+    instead_of: 'بدلاً من',
+    you_pay_today: 'التي تدفعونها اليوم',
+    savings_month: 'توفير شهري',
+    savings_year: 'توفير سنوي',
+    savings_est_month: 'توفير تقديري شهري',
+    savings_est_year: 'توفير تقديري سنوي',
+    cheapest_found: 'أرخص سعر وجدناه',
+    no_packages: 'لم نجد باقات مناسبة في هذه الفئة. يسعدنا التحقق لكم!',
+    good_price: 'أنتم بسعر جيد بالفعل! لكن يسعدنا التحقق إذا كان هناك عرض أفضل.',
+    promo_note: '* سعر عرض للأشهر الأولى',
+    after_promo: '، بعد ذلك ',
+    per_month: ' ₪ شهريًا',
+    lines_suffix: ' خطوط',
+    total_est_savings: 'إجمالي التوفير المقدّر',
+    promo_first_months: '* أسعار عروض للأشهر الأولى',
+    instead_pay: 'ستدفعون حوالي ',
+    about: 'حوالي ',
+    per_year: ' ₪ سنويًا!',
+    cat_labels: { cellular: 'خلوي', fiber: 'إنترنت', tv: 'تلفزيون', electricity: 'كهرباء' },
+    savings_prefix: 'توفير ',
+    packages_suffix: ' باقات × '
+  }
+};
+
+function t(key) {
+  return (translations[currentLang] && translations[currentLang][key]) || (translations.he[key]) || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'he' ? 'עברית' : 'عربي'));
+  });
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val) el.innerHTML = val;
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    const val = t(key);
+    if (val) el.placeholder = val;
+  });
+  const svc = serviceEl.value;
+  const isCellular = svc === 'cellular';
+  if (svc && svc !== 'all') {
+    document.getElementById('priceLabel').innerHTML = isCellular ? t('monthly_pay_per_line') : t('monthly_pay');
+  }
+  try { localStorage.setItem('zolzol_lang', lang); } catch(e) {}
+}
+
+try {
+  const saved = localStorage.getItem('zolzol_lang');
+  if (saved === 'ar') setLang('ar');
+} catch(e) {}
+</script>
+</body>
+</html>

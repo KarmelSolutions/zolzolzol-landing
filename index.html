@@ -365,43 +365,54 @@ select:focus, input:focus {
   display: flex; align-items: center; justify-content: center;
   font-size: 0.75rem; font-weight: 700; color: #fff; flex-shrink: 0;
 }
+.cs-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 9998;
+  animation: overlayFadeIn 0.2s ease;
+}
+.cs-overlay.active { display: block; }
+@keyframes overlayFadeIn { from { opacity: 0; } to { opacity: 1; } }
 .cs-dropdown {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  bottom: 0;
   left: 0; right: 0;
   background: #fff;
-  border: 1.5px solid var(--input-focus);
-  border-top: none;
-  border-radius: 0 0 14px 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.15);
   z-index: 9999;
-  max-height: 50vh;
+  max-height: 60vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
   display: none;
-  animation: dropdownOpen 0.2s ease;
+  animation: sheetSlideUp 0.3s ease;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-.custom-select-wrap.open .cs-dropdown { display: block; }
-@keyframes dropdownOpen {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
+.cs-dropdown.active { display: block; }
+@keyframes sheetSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
-.cs-dropdown::-webkit-scrollbar { width: 6px; }
-.cs-dropdown::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); }
-.cs-dropdown::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
-.cs-dropdown.has-scroll::after {
-  content: '⌄';
-  position: sticky;
-  bottom: 0;
-  display: block;
-  text-align: center;
-  padding: 4px 0;
-  background: linear-gradient(transparent, #fff 40%);
-  color: var(--pink);
-  font-size: 1.2rem;
-  pointer-events: none;
+.cs-dropdown-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: sticky; top: 0; background: #fff; z-index: 1;
+  border-radius: 20px 20px 0 0;
 }
+.cs-dropdown-header span {
+  font-weight: 700; font-size: 1.05rem; color: var(--text);
+}
+.cs-dropdown-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(0,0,0,0.06); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--text-muted); transition: background 0.15s;
+}
+.cs-dropdown-close:hover { background: rgba(0,0,0,0.1); }
 .cs-option {
   display: flex; align-items: center; gap: 12px;
   padding: 11px 16px;
@@ -2005,12 +2016,22 @@ function buildCustomSelect(selectEl) {
   trigger.innerHTML = '<span class="cs-placeholder">בחרו חברה</span><svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
   wrap.appendChild(trigger);
 
+  const overlay = document.createElement('div');
+  overlay.className = 'cs-overlay';
+  document.body.appendChild(overlay);
   const dropdown = document.createElement('div');
   dropdown.className = 'cs-dropdown';
-  wrap.appendChild(dropdown);
+  const ddHeader = document.createElement('div');
+  ddHeader.className = 'cs-dropdown-header';
+  ddHeader.innerHTML = '<span>בחרו חברה</span><button class="cs-dropdown-close" type="button">✕</button>';
+  dropdown.appendChild(ddHeader);
+  const ddList = document.createElement('div');
+  ddList.className = 'cs-dropdown-list';
+  dropdown.appendChild(ddList);
+  document.body.appendChild(dropdown);
 
   function populate() {
-    dropdown.innerHTML = '';
+    ddList.innerHTML = '';
     Array.from(selectEl.options).forEach((opt, i) => {
       if (i === 0 && opt.disabled) return;
       const item = document.createElement('div');
@@ -2022,7 +2043,7 @@ function buildCustomSelect(selectEl) {
         updateTrigger();
         closeAll();
       });
-      dropdown.appendChild(item);
+      ddList.appendChild(item);
     });
   }
 
@@ -2036,40 +2057,32 @@ function buildCustomSelect(selectEl) {
       trigger.innerHTML = '<span class="cs-selected-item">' + companyIconHTML(val, 26) + selectedOpt.textContent + '</span><svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
       trigger.classList.add('has-value');
     }
-    dropdown.querySelectorAll('.cs-option').forEach(o => {
+    ddList.querySelectorAll('.cs-option').forEach(o => {
       o.classList.toggle('selected', o.querySelector('.cs-item-name').textContent === (selectedOpt ? selectedOpt.textContent : ''));
     });
   }
 
-  dropdown.addEventListener('touchmove', (e) => { e.stopPropagation(); }, { passive: true });
+  function openSheet() {
+    closeAll();
+    wrap.classList.add('open');
+    overlay.classList.add('active');
+    dropdown.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    populate();
+    dropdown.scrollTop = 0;
+  }
+  function closeSheet() {
+    wrap.classList.remove('open');
+    overlay.classList.remove('active');
+    dropdown.classList.remove('active');
+    document.body.style.overflow = '';
+  }
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
-    const isOpen = wrap.classList.contains('open');
-    closeAll();
-    if (!isOpen) {
-      wrap.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      populate();
-      setTimeout(function() {
-        if (dropdown.scrollHeight > dropdown.clientHeight) {
-          dropdown.classList.add('has-scroll');
-        } else {
-          dropdown.classList.remove('has-scroll');
-        }
-        dropdown.addEventListener('scroll', function onScroll() {
-          if (dropdown.scrollTop + dropdown.clientHeight >= dropdown.scrollHeight - 10) {
-            dropdown.classList.remove('has-scroll');
-          } else {
-            dropdown.classList.add('has-scroll');
-          }
-        });
-        var rect = dropdown.getBoundingClientRect();
-        if (rect.bottom > window.innerHeight) {
-          dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      }, 50);
-    }
+    if (wrap.classList.contains('open')) { closeSheet(); } else { openSheet(); }
   });
+  overlay.addEventListener('click', closeSheet);
+  ddHeader.querySelector('.cs-dropdown-close').addEventListener('click', closeSheet);
   dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
 
   const observer = new MutationObserver(() => { populate(); updateTrigger(); });
@@ -2080,6 +2093,8 @@ function buildCustomSelect(selectEl) {
 }
 function closeAll() {
   document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+  document.querySelectorAll('.cs-overlay.active').forEach(o => o.classList.remove('active'));
+  document.querySelectorAll('.cs-dropdown.active').forEach(d => d.classList.remove('active'));
   document.body.style.overflow = '';
 }
 document.addEventListener('click', closeAll);

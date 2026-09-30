@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>זול זול זול - חסכו בתקשורת</title>
+<title>زول زول زول - وفّروا في الاتصالات</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700;800;900&display=swap">
 <style>
 :root {
@@ -1495,86 +1495,86 @@ select:focus, input:focus {
 <div class="page-content">
 
 <div class="logo-area">
-  <div class="logo"><img src="logo.png" alt="זול זול זול - משווים עוברים חוסכים"></div>
+  <div class="logo"><img src="logo.png" alt="زول زول زول - نقارن ننتقل نوفّر"></div>
 </div>
 
 <div class="hero-divider"></div>
 
 <div class="hero">
-  <h1>גלו כמה אתם יכולים <span class="accent">לחסוך</span> בחשבון התקשורת</h1>
-  <p>מלאו את הפרטים ונמצא לכם את החבילה הכי משתלמת בשוק</p>
+  <h1>اكتشفوا كم يمكنكم <span class="accent">توفيره</span> في فاتورة الاتصالات</h1>
+  <p>املأوا التفاصيل وسنجد لكم الباقة الأكثر توفيرًا في السوق</p>
 </div>
 
 <div class="steps-indicator" id="stepsIndicator">
   <div class="step-dot active" data-step="1">
     <div class="step-circle">1</div>
-    <span class="step-label">משווים</span>
+    <span class="step-label">نقارن</span>
   </div>
   <div class="step-line" id="line1"></div>
   <div class="step-dot" data-step="2">
     <div class="step-circle">2</div>
-    <span class="step-label">חוסכים</span>
+    <span class="step-label">نوفّر</span>
   </div>
   <div class="step-line" id="line2"></div>
   <div class="step-dot" data-step="3">
     <div class="step-circle">3</div>
-    <span class="step-label">עוברים</span>
+    <span class="step-label">ننتقل</span>
   </div>
 </div>
 
 <div class="card">
   <!-- Step 1: Service Selection -->
   <div class="step active" id="step1">
-    <h2>מה החבילה הנוכחית שלכם?</h2>
-    <label class="field-label">בחרו סוג שירות</label>
+    <h2>ما هي باقتكم الحالية؟</h2>
+    <label class="field-label">اختاروا نوع الخدمة</label>
     <div class="service-grid">
       <button class="service-card" data-value="cellular" onclick="selectService(this)">
         <div class="service-icon"><img src="icon-cellular.png" alt="סלולר"></div>
-        <span class="service-name">סלולר</span>
+        <span class="service-name">خلوي</span>
       </button>
       <button class="service-card" data-value="fiber" onclick="selectService(this)">
         <div class="service-icon"><img src="icon-fiber.png" alt="סיבים אופטיים"></div>
-        <span class="service-name">סיבים אופטיים</span>
+        <span class="service-name">ألياف بصرية</span>
       </button>
       <button class="service-card" data-value="internet" onclick="selectService(this)">
         <div class="service-icon"><img src="icon-internet.png" alt="אינטרנט"></div>
-        <span class="service-name">אינטרנט</span>
+        <span class="service-name">إنترنت</span>
       </button>
       <button class="service-card" data-value="tv" onclick="selectService(this)">
         <div class="service-icon"><img src="icon-tv.png" alt="טלוויזיה וטריפל"></div>
-        <span class="service-name">טלוויזיה וטריפל</span>
+        <span class="service-name">تلفزيون وتريبل</span>
       </button>
       <button class="service-card" data-value="electricity" onclick="selectService(this)">
         <div class="service-icon"><img src="icon-electricity.png" alt="חשמל"></div>
-        <span class="service-name">חשמל</span>
+        <span class="service-name">كهرباء</span>
       </button>
       <button class="service-card" data-value="all" onclick="selectService(this)">
         <div class="service-icon" style="display:flex;align-items:center;justify-content:center;"><img src="icon-all.png" alt="הכל" style="filter: invert(1) brightness(1.6); width: 38px; height: 38px;"></div>
-        <span class="service-name">הכל</span>
+        <span class="service-name">الكل</span>
       </button>
     </div>
     <select id="serviceType" style="display:none">
-      <option value="" disabled selected>בחרו סוג שירות</option>
-      <option value="cellular">סלולר</option>
-      <option value="fiber">אינטרנט סיבים</option>
-      <option value="internet">אינטרנט</option>
-      <option value="tv">טלוויזיה וטריפל</option>
-      <option value="electricity">חשמל</option>
-      <option value="all">הכל</option>
+      <option value="" disabled selected>اختاروا نوع الخدمة</option>
+      <option value="cellular">خلوي</option>
+      <option value="fiber">إنترنت ألياف</option>
+      <option value="internet">إنترنت</option>
+      <option value="tv">تلفزيون وتريبل</option>
+      <option value="electricity">كهرباء</option>
+      <option value="all">الكل</option>
     </select>
     <div id="serviceFields" style="display:none">
     <div class="field-group" id="providerGroup" style="display:none">
-      <label class="field-label" for="currentProvider">חברה נוכחית</label>
+      <label class="field-label" for="currentProvider">الشركة الحالية</label>
       <select id="currentProvider">
         <option value="" disabled selected>בחרו חברה</option>
       </select>
     </div>
     <div class="field-group" id="otherProviderGroup" style="display:none">
-      <label class="field-label" for="otherProvider">שם החברה</label>
-      <input type="text" id="otherProvider" placeholder="הקלידו שם חברה">
+      <label class="field-label" for="otherProvider">اسم الشركة</label>
+      <input type="text" id="otherProvider" placeholder="اكتبوا اسم الشركة">
     </div>
     <div class="field-group" id="linesGroup" style="display:none">
-      <label class="field-label" for="numLines">כמה קווים יש לכם?</label>
+      <label class="field-label" for="numLines">كم خطًا لديكم؟</label>
       <div class="lines-input-wrap">
         <button type="button" class="lines-btn" onclick="changeLinesCount(-1)">−</button>
         <input type="number" id="numLines" min="1" max="20" placeholder="1" value="1">
@@ -1585,38 +1585,38 @@ select:focus, input:focus {
       <div class="all-steps-indicator" id="allStepsIndicator">
         <div class="all-step-item active" data-all-step="1">
           <div class="all-step-dot">1</div>
-          <span class="all-step-label">סלולר</span>
+          <span class="all-step-label">خلوي</span>
         </div>
         <div class="all-step-line"></div>
         <div class="all-step-item" data-all-step="2">
           <div class="all-step-dot">2</div>
-          <span class="all-step-label">אינטרנט</span>
+          <span class="all-step-label">إنترنت</span>
         </div>
         <div class="all-step-line"></div>
         <div class="all-step-item" data-all-step="3">
           <div class="all-step-dot">3</div>
-          <span class="all-step-label">טלוויזיה</span>
+          <span class="all-step-label">تلفزيون</span>
         </div>
         <div class="all-step-line"></div>
         <div class="all-step-item" data-all-step="4">
           <div class="all-step-dot">4</div>
-          <span class="all-step-label">חשמל</span>
+          <span class="all-step-label">كهرباء</span>
         </div>
       </div>
 
       <div class="savings-display" id="allSavingsDisplay" style="display:none">
-        <div class="savings-display-label">החיסכון המשוער שלכם</div>
+        <div class="savings-display-label">التوفير المقدّر لكم</div>
         <div class="savings-display-amount" id="allSavingsAmount">0 ₪<small> / חודש</small></div>
         <div class="savings-display-year" id="allSavingsYear"></div>
       </div>
 
       <div class="all-step-panel active" data-all-panel="1">
         <div class="field-group">
-          <label class="field-label">סלולר - חברה נוכחית</label>
+          <label class="field-label">خلوي - الشركة الحالية</label>
           <select class="all-provider-select" data-cat="cellular"><option value="" disabled selected>בחרו חברה</option></select>
         </div>
         <div class="field-group">
-          <label class="field-label">כמה קווים?</label>
+          <label class="field-label">كم خطًا؟</label>
           <div class="lines-input-wrap">
             <button type="button" class="lines-btn" onclick="changeLinesCountAll(-1)">−</button>
             <input type="number" id="allNumLines" min="1" max="20" placeholder="1" value="1">
@@ -1624,86 +1624,86 @@ select:focus, input:focus {
           </div>
         </div>
         <div class="field-group">
-          <label class="field-label">כמה משלמים בחודש על סלולר?</label>
+          <label class="field-label">كم تدفعون شهريًا على الخلوي؟</label>
           <div class="price-input-wrap">
             <input type="number" class="all-price-input" data-cat="cellular" placeholder="לדוגמא: 120" min="1" oninput="updateAllSavings()">
             <span class="currency">₪</span>
           </div>
         </div>
         <div class="all-step-nav">
-          <button class="btn btn-primary" onclick="nextAllStep()">המשך לאינטרנט ←</button>
+          <button class="btn btn-primary" onclick="nextAllStep()">← التالي: إنترنت</button>
         </div>
       </div>
 
       <div class="all-step-panel" data-all-panel="2">
         <div class="field-group">
-          <label class="field-label">אינטרנט / סיבים - חברה נוכחית</label>
+          <label class="field-label">إنترنت / ألياف - الشركة الحالية</label>
           <select class="all-provider-select" data-cat="fiber"><option value="" disabled selected>בחרו חברה</option></select>
         </div>
         <div class="field-group">
-          <label class="field-label">כמה משלמים בחודש על אינטרנט?</label>
+          <label class="field-label">كم تدفعون شهريًا على الإنترنت؟</label>
           <div class="price-input-wrap">
             <input type="number" class="all-price-input" data-cat="fiber" placeholder="לדוגמא: 100" min="1" oninput="updateAllSavings()">
             <span class="currency">₪</span>
           </div>
         </div>
         <div class="all-step-nav">
-          <button class="btn btn-back" onclick="prevAllStep()">חזרה →</button>
-          <button class="btn btn-primary" onclick="nextAllStep()">המשך לטלוויזיה ←</button>
+          <button class="btn btn-back" onclick="prevAllStep()">→ رجوع</button>
+          <button class="btn btn-primary" onclick="nextAllStep()">← التالي: تلفزيون</button>
         </div>
       </div>
 
       <div class="all-step-panel" data-all-panel="3">
         <div class="field-group">
-          <label class="field-label">טלוויזיה - חברה נוכחית</label>
+          <label class="field-label">تلفزيون - الشركة الحالية</label>
           <select class="all-provider-select" data-cat="tv"><option value="" disabled selected>בחרו חברה</option></select>
         </div>
         <div class="field-group">
-          <label class="field-label">כמה משלמים בחודש על טלוויזיה?</label>
+          <label class="field-label">كم تدفعون شهريًا على التلفزيون؟</label>
           <div class="price-input-wrap">
             <input type="number" class="all-price-input" data-cat="tv" placeholder="לדוגמא: 150" min="1" oninput="updateAllSavings()">
             <span class="currency">₪</span>
           </div>
         </div>
         <div class="all-step-nav">
-          <button class="btn btn-back" onclick="prevAllStep()">חזרה →</button>
-          <button class="btn btn-primary" onclick="nextAllStep()">המשך לחשמל ←</button>
+          <button class="btn btn-back" onclick="prevAllStep()">→ رجوع</button>
+          <button class="btn btn-primary" onclick="nextAllStep()">← التالي: كهرباء</button>
         </div>
       </div>
 
       <div class="all-step-panel" data-all-panel="4">
         <div class="field-group">
-          <label class="field-label">חשמל - חברה נוכחית</label>
+          <label class="field-label">كهرباء - الشركة الحالية</label>
           <select class="all-provider-select" data-cat="electricity"><option value="" disabled selected>בחרו חברה</option></select>
         </div>
         <div class="field-group">
-          <label class="field-label">כמה משלמים בחודש על חשמל?</label>
+          <label class="field-label">كم تدفعون شهريًا على الكهرباء؟</label>
           <div class="price-input-wrap">
             <input type="number" class="all-price-input" data-cat="electricity" placeholder="לדוגמא: 300" min="1" oninput="updateAllSavings(); updateElectricityDiscount()">
             <span class="currency">₪</span>
           </div>
           <div id="electricityDiscountDisplay" class="electricity-discount" style="display:none;">
             <span class="electricity-discount-icon">⚡</span>
-            <span>הנחה משוערת: </span><strong id="electricityDiscountAmount">0 ₪</strong><span> לחודש</span>
+            <span>خصم تقديري: </span><strong id="electricityDiscountAmount">0 ₪</strong><span> شهريًا</span>
           </div>
         </div>
         <div class="all-step-nav">
-          <button class="btn btn-back" onclick="prevAllStep()">חזרה →</button>
-          <button class="btn btn-primary" onclick="finishAllSteps()">הראו לי את החיסכון המלא ←</button>
+          <button class="btn btn-back" onclick="prevAllStep()">→ رجوع</button>
+          <button class="btn btn-primary" onclick="finishAllSteps()">← أظهروا لي التوفير الكامل</button>
         </div>
       </div>
     </div>
     <div class="field-group" id="priceGroup">
-      <label class="field-label" for="currentPrice" id="priceLabel">כמה אתם משלמים בחודש?</label>
+      <label class="field-label" for="currentPrice" id="priceLabel">كم تدفعون شهريًا؟</label>
       <div class="price-input-wrap">
         <input type="number" id="currentPrice" placeholder="לדוגמא: 120" min="1">
         <span class="currency">&#8362;</span>
       </div>
       <div class="total-lines-calc" id="totalLinesCalc" style="display:none">
-        <span>סה״כ לכל הקווים:</span> <strong id="totalLinesAmount">0 ₪</strong> <span>לחודש</span>
+        <span>المجموع لكل الخطوط:</span> <strong id="totalLinesAmount">0 ₪</strong> <span>شهريًا</span>
       </div>
     </div>
-    <button class="btn btn-primary" id="btnStep1" disabled onclick="goToStep(2)">הראו לי כמה אני יכול לחסוך</button>
+    <button class="btn btn-primary" id="btnStep1" disabled onclick="goToStep(2)">أظهروا لي كم يمكنني التوفير</button>
     </div>
   </div>
 
@@ -1711,43 +1711,43 @@ select:focus, input:focus {
   <div class="step" id="step2">
     <div class="result-box" id="resultBox"></div>
     <button class="btn btn-cta" onclick="goToStep(3)">
-      <span class="btn-cta-text">מעבר להצטרפות</span>
-      <span class="btn-cta-sub">ולהטבה נוספת מאיתנו</span>
+      <span class="btn-cta-text">الانتقال للتسجيل</span>
+      <span class="btn-cta-sub">ومزايا إضافية منّا</span>
       <span class="btn-cta-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg></span>
     </button>
-    <button class="btn btn-secondary" onclick="goToStep(1)">חזרה לשינוי פרטים</button>
+    <button class="btn btn-secondary" onclick="goToStep(1)">رجوع لتعديل التفاصيل</button>
   </div>
 
   <!-- Step 3: Contact -->
   <div class="step" id="step3">
-    <h2>השאירו פרטים ונחזור אליכם</h2>
+    <h2>اتركوا تفاصيلكم وسنعود إليكم</h2>
     <div class="contact-fields">
       <div class="field-group">
-        <label class="field-label" for="fullName">שם מלא</label>
-        <input type="text" id="fullName" placeholder="ישראל ישראלי" pattern="^[a-zA-Zא-ת\s'\-]+$">
-        <span class="name-error" id="nameError">יש להזין אותיות בלבד, ללא מספרים או תווים מיוחדים</span>
+        <label class="field-label" for="fullName">الاسم الكامل</label>
+        <input type="text" id="fullName" placeholder="الاسم الكامل" pattern="^[a-zA-Zא-ת\s'\-]+$">
+        <span class="name-error" id="nameError">يجب إدخال حروف فقط، بدون أرقام أو رموز خاصة</span>
       </div>
       <div class="field-group">
-        <label class="field-label" for="phone">טלפון</label>
+        <label class="field-label" for="phone">هاتف</label>
         <input type="tel" id="phone" placeholder="050-0000000" dir="ltr" maxlength="11" pattern="^0(5[0-9]\d{7}|[2-9]\d{7})$">
-        <span class="phone-error" id="phoneError">יש להזין מספר טלפון ישראלי תקין</span>
+        <span class="phone-error" id="phoneError">يجب إدخال رقم هاتف إسرائيلي صحيح</span>
       </div>
     </div>
     <label class="consent-label">
       <input type="checkbox" id="consentCheck" onchange="validateStep3()">
-      <span>אני מסכים/ה ל<a href="javascript:void(0)" class="consent-link" onclick="event.preventDefault(); document.getElementById('consentDetails').classList.toggle('show');">תנאי השימוש</a></span>
+      <span>أوافق على <a href="javascript:void(0)" class="consent-link" onclick="event.preventDefault(); document.getElementById('consentDetails').classList.toggle('show');">شروط الاستخدام</a></span>
     </label>
     <div class="consent-details" id="consentDetails">
-      <p>בלחיצה על "שלחו לי הצעה" אני מאשר/ת:</p>
+      <p>بالضغط على "أرسلوا لي عرضًا" أوافق على:</p>
       <ul>
-        <li>קבלת הצעות מחיר לחבילות תקשורת</li>
-        <li>יצירת קשר טלפוני או בהודעה</li>
-        <li>שמירת הפרטים לצורך מתן השירות</li>
+        <li>استلام عروض أسعار لباقات الاتصالات</li>
+        <li>التواصل عبر الهاتف أو الرسائل</li>
+        <li>حفظ التفاصيل لغرض تقديم الخدمة</li>
       </ul>
-      <p>ניתן לבטל בכל עת בפנייה אלינו.</p>
+      <p>يمكن الإلغاء في أي وقت بالتواصل معنا.</p>
     </div>
-    <button class="btn btn-primary" id="btnSubmit" disabled onclick="submitLead()">שלחו לי הצעה</button>
-    <button class="btn btn-secondary" onclick="goToStep(2)">חזרה לתוצאות</button>
+    <button class="btn btn-primary" id="btnSubmit" disabled onclick="submitLead()">أرسلوا لي عرضًا</button>
+    <button class="btn btn-secondary" onclick="goToStep(2)">رجوع للنتائج</button>
   </div>
 
   <!-- Step 4: Success -->
@@ -1755,8 +1755,8 @@ select:focus, input:focus {
     <div class="success-check">
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
     </div>
-    <h2>הפרטים נשלחו בהצלחה!</h2>
-    <p style="text-align:center;color:var(--text-secondary);margin:0">נציג שלנו יחזור אליכם בהקדם עם ההצעה המשתלמת ביותר.</p>
+    <h2>تم إرسال التفاصيل بنجاح!</h2>
+    <p style="text-align:center;color:var(--text-secondary);margin:0">سيتواصل معكم ممثلنا قريبًا مع العرض الأفضل.</p>
   </div>
 </div>
 
@@ -1773,12 +1773,12 @@ select:focus, input:focus {
       <div class="app-dl-badge-text"><small>GET IT ON</small><strong>Google Play</strong></div>
     </a>
   </div>
-  <div class="app-dl-text">הורידו את <span>PingWin</span><br>וקבלו תגמול על כל חבילה!</div>
+  <div class="app-dl-text">حمّلوا تطبيق <span>PingWin</span><br>واحصلوا على مكافأة عن كل باقة!</div>
   </div>
 </div>
 
 <div class="footer">
-  <span>&copy; 2026 zolzolzol.co.il - כל הזכויות שמורות</span>
+  <span>&copy; 2026 zolzolzol.co.il - جميع الحقوق محفوظة</span>
 </div>
 
 </div><!-- .page-content -->
@@ -1792,34 +1792,34 @@ select:focus, input:focus {
       <div class="modal-success-icon">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
-      <h3>הפרטים נשלחו בהצלחה!</h3>
+      <h3>تم إرسال التفاصيل بنجاح!</h3>
       <img src="pingwin-logo-new.webp" alt="PingWin" class="modal-logo-img">
-      <p>על כל חבילת תקשורת שתצטרפו אליה דרכנו,<br>תקבלו תגמול של <strong>40 ₪</strong> לחבילה</p>
+      <p>عن كل باقة اتصالات تنضمون إليها من خلالنا،<br>تحصلون على مكافأة <strong>40 ₪</strong> للباقة</p>
       <div class="modal-reward-box">
-        <div class="modal-reward-label">סה״כ תגמול שמגיע לכם</div>
+        <div class="modal-reward-label">مجموع المكافأة المستحقة لكم</div>
         <div class="modal-reward-amount" id="modalRewardAmount">40 ₪</div>
         <div class="modal-reward-detail" id="modalRewardDetail"></div>
       </div>
       <div class="modal-perks">
         <span class="modal-perk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>ללא התחייבות</span>
+          <span>بدون التزام</span>
         </span>
         <span class="modal-perk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>הרשמה בחינם</span>
+          <span>تسجيل مجاني</span>
         </span>
         <span class="modal-perk">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>כסף אמיתי</span>
+          <span>أموال حقيقية</span>
         </span>
       </div>
-      <p>הורידו את האפליקציה וקבלו את התגמול!</p>
+      <p>حمّلوا التطبيق واحصلوا على المكافأة!</p>
       <a href="https://ping-win.co.il/invite?code=XRRBAS" target="_blank" rel="noopener" class="app-badge">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
-        <span>הורידו את PingWin</span>
+        <span>حمّلوا PingWin</span>
       </a>
-      <div class="modal-terms">*בכפוף לתקנון</div>
+      <div class="modal-terms">*وفقًا للشروط والأحكام</div>
     </div>
   </div>
 </div>
@@ -1853,7 +1853,7 @@ const companiesByCategory = {
 
 async function fetchPackages(category) {
   try {
-    const url = API_BASE + '?source=merged&lang=he&category=' + encodeURIComponent(category);
+    const url = API_BASE + '?source=merged&lang=ar&category=' + encodeURIComponent(category);
     const res = await fetch(url);
     if (!res.ok) throw new Error('status ' + res.status);
     const data = await res.json();
@@ -1922,7 +1922,7 @@ serviceEl.addEventListener('change', () => {
   allProvidersGroup.style.display = isAll ? '' : 'none';
   priceGroup.style.display = isAll ? 'none' : '';
   btnStep1.style.display = isAll ? 'none' : '';
-  priceLabel.textContent = isCellular ? 'כמה משלמים לכל קו?' : 'כמה אתם משלמים בחודש?';
+  priceLabel.textContent = isCellular ? 'كم تدفعون لكل خط؟' : 'كم تدفعون شهريًا؟';
   document.getElementById('totalLinesCalc').style.display = 'none';
 
   if (!svc) {
@@ -1941,7 +1941,7 @@ serviceEl.addEventListener('change', () => {
     document.querySelectorAll('.all-provider-select').forEach(sel => {
       const cat = sel.dataset.cat;
       const companies = companiesByCategory[cat] || ['אחר'];
-      sel.innerHTML = '<option value="" disabled selected>' + 'בחרו חברה' + '</option>';
+      sel.innerHTML = '<option value="" disabled selected>' + 'اختاروا شركة' + '</option>';
       companies.forEach(c => {
         const opt = document.createElement('option');
         opt.value = c;
@@ -1953,7 +1953,7 @@ serviceEl.addEventListener('change', () => {
     document.getElementById('allNumLines').value = '1';
   } else {
     const companies = companiesByCategory[svc] || ['אחר'];
-    providerEl.innerHTML = '<option value="" disabled selected>' + 'בחרו חברה' + '</option>';
+    providerEl.innerHTML = '<option value="" disabled selected>' + 'اختاروا شركة' + '</option>';
     companies.forEach(c => {
       const opt = document.createElement('option');
       opt.value = c;
@@ -2058,8 +2058,8 @@ function updateAllSavings() {
   const display = document.getElementById('allSavingsDisplay');
   if (savings > 0) {
     display.style.display = '';
-    document.getElementById('allSavingsAmount').innerHTML = savings + ' ₪<small> / ' + 'לחודש' + '</small>';
-    document.getElementById('allSavingsYear').textContent = 'כ-' + (savings * 12) + ' ₪ בשנה!';
+    document.getElementById('allSavingsAmount').innerHTML = savings + ' ₪<small> / ' + 'شهريًا' + '</small>';
+    document.getElementById('allSavingsYear').textContent = 'حوالي ' + (savings * 12) + ' ₪ سنويًا!';
   } else {
     display.style.display = 'none';
   }
@@ -2139,9 +2139,9 @@ function validateStep3() {
 async function goToStep(n) {
   if (n === 2) {
     btnStep1.disabled = true;
-    btnStep1.textContent = 'מחפש חבילות...';
+    btnStep1.textContent = 'جاري البحث عن باقات...';
     await buildResult();
-    btnStep1.textContent = 'הראו לי כמה אני יכול לחסוך';
+    btnStep1.textContent = 'أظهروا لي كم يمكنني التوفير';
     validateStep1();
   }
   document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
@@ -2174,22 +2174,22 @@ async function buildResult() {
     box.innerHTML = `
       <div class="savings-badge">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        ${'מצאנו לכם הנחה על חשמל!'}
+        ${'وجدنا لكم خصمًا على الكهرباء!'}
       </div>
       <div class="result-summary">
-        <p class="result-summary-label">${'הנחה משוערת של 20%'}</p>
-        <p class="result-price">${newPrice} &#8362;<small> / ${'לחודש'}</small></p>
-        <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+        <p class="result-summary-label">${'خصم تقديري 20%'}</p>
+        <p class="result-price">${newPrice} &#8362;<small> / ${'شهريًا'}</small></p>
+        <p class="result-summary-compare">${'بدلاً من'} ${price} ₪ ${'التي تدفعونها اليوم'}</p>
       </div>
       <div class="savings-breakdown">
         <div class="savings-item">
           <span class="savings-item-amount">${discount} &#8362;</span>
-          <span class="savings-item-label">${'חיסכון בחודש'}</span>
+          <span class="savings-item-label">${'توفير شهري'}</span>
         </div>
         <div class="savings-divider"></div>
         <div class="savings-item">
           <span class="savings-item-amount">${yearSavings} &#8362;</span>
-          <span class="savings-item-label">${'חיסכון בשנה'}</span>
+          <span class="savings-item-label">${'توفير سنوي'}</span>
         </div>
       </div>
     `;
@@ -2206,26 +2206,26 @@ async function buildResult() {
     const savings = Math.round(price - totalNewPrice);
     const yearSavings = Math.round(savings * 12);
     const box = document.getElementById('resultBox');
-    const linesNote = numLines > 1 ? ` (${numLines}${' קווים'})` : '';
+    const linesNote = numLines > 1 ? ` (${numLines}${' خطوط'})` : '';
     box.innerHTML = `
       <div class="savings-badge">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-        ${'מצאנו לכם חבילה זולה יותר!'}
+        ${'وجدنا لكم باقة أرخص!'}
       </div>
       <div class="result-summary">
-        <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}${linesNote}</p>
-        <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
-        <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+        <p class="result-summary-label">${'أرخص سعر وجدناه'}${linesNote}</p>
+        <p class="result-price">${totalNewPrice} &#8362;<small> / ${'شهريًا'}</small></p>
+        <p class="result-summary-compare">${'بدلاً من'} ${price} ₪ ${'التي تدفعونها اليوم'}</p>
       </div>
       <div class="savings-breakdown">
         <div class="savings-item">
           <span class="savings-item-amount">${savings} &#8362;</span>
-          <span class="savings-item-label">${'חיסכון בחודש'}</span>
+          <span class="savings-item-label">${'توفير شهري'}</span>
         </div>
         <div class="savings-divider"></div>
         <div class="savings-item">
           <span class="savings-item-amount">${yearSavings} &#8362;</span>
-          <span class="savings-item-label">${'חיסכון בשנה'}</span>
+          <span class="savings-item-label">${'توفير سنوي'}</span>
         </div>
       </div>
     `;
@@ -2253,14 +2253,14 @@ async function buildResult() {
   const best = cheaper.length > 0 ? cheaper[0] : validPkgs.sort((a, b) => a.price - b.price)[0];
 
   if (!best) {
-    document.getElementById('resultBox').innerHTML = '<p style="text-align:center;color:var(--text-secondary)">' + 'לא נמצאו חבילות מתאימות בקטגוריה זו. נשמח לבדוק עבורכם!' + '</p>';
+    document.getElementById('resultBox').innerHTML = '<p style="text-align:center;color:var(--text-secondary)">' + 'لم نجد باقات مناسبة في هذه الفئة. يسعدنا التحقق لكم!' + '</p>';
     return;
   }
 
   const totalNewPrice = best.price * numLines;
   const details = buildDetails(best);
   const box = document.getElementById('resultBox');
-  const linesNote = numLines > 1 ? ` (${numLines}${' קווים'})` : '';
+  const linesNote = numLines > 1 ? ` (${numLines}${' خطوط'})` : '';
   const perLineNote = numLines > 1 ? `<small> לקו</small>` : '';
 
   if (isCellular) {
@@ -2270,31 +2270,31 @@ async function buildResult() {
       box.innerHTML = `
         <div class="savings-badge">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          ${'מצאנו לכם חבילה זולה יותר!'}
+          ${'وجدنا لكم باقة أرخص!'}
         </div>
         <div class="result-summary">
-          <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}${linesNote}</p>
-          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
-          <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+          <p class="result-summary-label">${'أرخص سعر وجدناه'}${linesNote}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'شهريًا'}</small></p>
+          <p class="result-summary-compare">${'بدلاً من'} ${price} ₪ ${'التي تدفعونها اليوم'}</p>
         </div>
         <div class="savings-breakdown">
           <div class="savings-item">
             <span class="savings-item-amount">${savings} &#8362;</span>
-            <span class="savings-item-label">${'חיסכון בחודש'}</span>
+            <span class="savings-item-label">${'توفير شهري'}</span>
           </div>
           <div class="savings-divider"></div>
           <div class="savings-item">
             <span class="savings-item-amount">${yearSavings} &#8362;</span>
-            <span class="savings-item-label">${'חיסכון בשנה'}</span>
+            <span class="savings-item-label">${'توفير سنوي'}</span>
           </div>
         </div>
       `;
     } else {
       box.innerHTML = `
         <div class="result-summary">
-          <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}</p>
-          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
-          <p class="result-summary-compare">${'אתם כבר במחיר טוב! אבל נשמח לבדוק עבורכם אם יש הצעה טובה יותר.'}</p>
+          <p class="result-summary-label">${'أرخص سعر وجدناه'}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'شهريًا'}</small></p>
+          <p class="result-summary-compare">${'أنتم بسعر جيد بالفعل! لكن يسعدنا التحقق إذا كان هناك عرض أفضل.'}</p>
         </div>
       `;
     }
@@ -2306,39 +2306,39 @@ async function buildResult() {
       : Math.round(best.price * 1.15 * 100) / 100;
     const estimatedSavings = Math.max(0, Math.round(price - weightedPrice));
     const estimatedYearSavings = estimatedSavings * 12;
-    const promoNote = `<p class="result-promo-note">${'* מחיר מבצע לחודשים הראשונים'}${regularTotal ? ', לאחר מכן ' + regularTotal + ' ₪ לחודש' : ''}</p>`;
+    const promoNote = `<p class="result-promo-note">${'* سعر عرض للأشهر الأولى'}${regularTotal ? '، بعد ذلك ' + regularTotal + ' ₪ شهريًا' : ''}</p>`;
 
     if (best.price < price) {
       box.innerHTML = `
         <div class="savings-badge">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-          ${'מצאנו לכם חבילה זולה יותר!'}
+          ${'وجدنا لكم باقة أرخص!'}
         </div>
         <div class="result-summary">
-          <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}</p>
-          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
+          <p class="result-summary-label">${'أرخص سعر وجدناه'}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'شهريًا'}</small></p>
           ${promoNote}
-          <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+          <p class="result-summary-compare">${'بدلاً من'} ${price} ₪ ${'التي تدفعونها اليوم'}</p>
         </div>
         <div class="savings-breakdown">
           <div class="savings-item">
             <span class="savings-item-amount">${estimatedSavings} &#8362;</span>
-            <span class="savings-item-label">${'חיסכון משוער בחודש'}</span>
+            <span class="savings-item-label">${'توفير تقديري شهري'}</span>
           </div>
           <div class="savings-divider"></div>
           <div class="savings-item">
             <span class="savings-item-amount">${estimatedYearSavings} &#8362;</span>
-            <span class="savings-item-label">${'חיסכון משוער בשנה'}</span>
+            <span class="savings-item-label">${'توفير تقديري سنوي'}</span>
           </div>
         </div>
       `;
     } else {
       box.innerHTML = `
         <div class="result-summary">
-          <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}</p>
-          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
+          <p class="result-summary-label">${'أرخص سعر وجدناه'}</p>
+          <p class="result-price">${totalNewPrice} &#8362;<small> / ${'شهريًا'}</small></p>
           ${promoNote}
-          <p class="result-summary-compare">${'אתם כבר במחיר טוב! אבל נשמח לבדוק עבורכם אם יש הצעה טובה יותר.'}</p>
+          <p class="result-summary-compare">${'أنتم بسعر جيد بالفعل! لكن يسعدنا التحقق إذا كان هناك عرض أفضل.'}</p>
         </div>
       `;
     }
@@ -2355,27 +2355,27 @@ function buildAllResult(totalPrice, monthlySavings) {
     const price = parseInt(inp.value) || 0;
     const rate = allSavingsRates[cat] || 0.15;
     const catSavings = Math.round(price * rate);
-    const labels = ({ cellular: 'סלולר', fiber: 'אינטרנט', tv: 'טלוויזיה', electricity: 'חשמל' });
+    const labels = ({ cellular: 'خلوي', fiber: 'إنترنت', tv: 'تلفزيون', electricity: 'كهرباء' });
     if (price > 0) breakdown.push({ label: labels[cat], price, savings: catSavings });
   });
 
   let breakdownHtml = breakdown.map(b =>
     `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--divider);">
       <span style="color:var(--text-secondary);font-size:0.9rem;">${b.label}: ${b.price} ₪</span>
-      <span style="color:var(--green-dark);font-weight:700;font-size:0.9rem;">${'חיסכון '}${b.savings} ₪</span>
+      <span style="color:var(--green-dark);font-weight:700;font-size:0.9rem;">${'توفير '}${b.savings} ₪</span>
     </div>`
   ).join('');
 
   box.innerHTML = `
     <div class="savings-badge">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      ${'מצאנו לכם חיסכון על כל השירותים!'}
+      ${'وجدنا لكم توفيرًا على جميع الخدمات!'}
     </div>
     <div class="result-summary">
-      <p class="result-summary-label">${'החיסכון הכולל המשוער'}</p>
-      <p class="result-price">${monthlySavings} &#8362;<small> / ${'לחודש'}</small></p>
-      <p class="result-promo-note">${'* מחירי מבצע לחודשים הראשונים'}</p>
-      <p class="result-summary-compare">${'במקום'} ${totalPrice} ₪ ${'תשלמו כ-'}${newPrice} ₪</p>
+      <p class="result-summary-label">${'إجمالي التوفير المقدّر'}</p>
+      <p class="result-price">${monthlySavings} &#8362;<small> / ${'شهريًا'}</small></p>
+      <p class="result-promo-note">${'* أسعار عروض للأشهر الأولى'}</p>
+      <p class="result-summary-compare">${'بدلاً من'} ${totalPrice} ₪ ${'ستدفعون حوالي '}${newPrice} ₪</p>
     </div>
     <div style="margin:16px 0;padding:12px 16px;border-radius:14px;background:rgba(250,245,248,0.8);border:1px solid var(--divider);">
       ${breakdownHtml}
@@ -2383,12 +2383,12 @@ function buildAllResult(totalPrice, monthlySavings) {
     <div class="savings-breakdown">
       <div class="savings-item">
         <span class="savings-item-amount">${monthlySavings} &#8362;</span>
-        <span class="savings-item-label">${'חיסכון משוער בחודש'}</span>
+        <span class="savings-item-label">${'توفير تقديري شهري'}</span>
       </div>
       <div class="savings-divider"></div>
       <div class="savings-item">
         <span class="savings-item-amount">${yearSavings} &#8362;</span>
-        <span class="savings-item-label">${'חיסכון משוער בשנה'}</span>
+        <span class="savings-item-label">${'توفير تقديري سنوي'}</span>
       </div>
     </div>
   `;
@@ -2446,7 +2446,7 @@ function submitLead() {
   document.getElementById('modalRewardAmount').textContent = totalReward + ' ₪';
   const detailEl = document.getElementById('modalRewardDetail');
   if (numPackages > 1) {
-    detailEl.textContent = numPackages + ' חבילות × ' + perPackage + ' ₪';
+    detailEl.textContent = numPackages + ' باقات × ' + perPackage + ' ₪';
   } else {
     detailEl.textContent = '';
   }

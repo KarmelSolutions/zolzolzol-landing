@@ -323,6 +323,107 @@ select:focus, input:focus {
   background: rgba(255, 255, 255, 0.9);
 }
 
+/* Custom provider dropdown */
+.custom-select-wrap { position: relative; }
+.custom-select-trigger {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 14px;
+  background: var(--input-bg);
+  backdrop-filter: blur(8px);
+  color: var(--text-muted);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+.custom-select-trigger.has-value { color: var(--text); font-weight: 500; }
+.custom-select-trigger:hover { border-color: rgba(238, 17, 122, 0.3); }
+.custom-select-wrap.open .custom-select-trigger {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 4px var(--pink-glow);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px 14px 0 0;
+}
+.custom-select-trigger .cs-arrow {
+  width: 18px; height: 18px;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+.custom-select-wrap.open .cs-arrow { transform: rotate(180deg); opacity: 0.8; }
+.custom-select-trigger .cs-selected-item {
+  display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0;
+}
+.custom-select-trigger .cs-selected-item .cs-item-icon {
+  width: 26px; height: 26px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+.cs-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  background: #fff;
+  border: 1.5px solid var(--input-focus);
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  z-index: 30;
+  max-height: 260px;
+  overflow-y: auto;
+  display: none;
+  animation: dropdownOpen 0.2s ease;
+}
+.custom-select-wrap.open .cs-dropdown { display: block; }
+@keyframes dropdownOpen {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cs-dropdown::-webkit-scrollbar { width: 6px; }
+.cs-dropdown::-webkit-scrollbar-track { background: transparent; }
+.cs-dropdown::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 3px; }
+.cs-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  font-size: 0.95rem;
+  color: var(--text);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.cs-option:last-child { border-bottom: none; }
+.cs-option:hover { background: var(--pink-light); }
+.cs-option.selected { background: rgba(238, 17, 122, 0.08); font-weight: 600; }
+.cs-option .cs-item-icon {
+  width: 32px; height: 32px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; color: #fff; flex-shrink: 0;
+  letter-spacing: -0.3px;
+}
+.cs-option .cs-item-name { flex: 1; }
+.cs-option .cs-check {
+  width: 18px; height: 18px; opacity: 0;
+  color: var(--pink); flex-shrink: 0;
+}
+.cs-option.selected .cs-check { opacity: 1; }
+.cs-item-logo {
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,0.08);
+  overflow: hidden;
+  padding: 3px;
+}
+.cs-item-logo img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .service-toggle-btn {
   width: 100%;
   padding: 14px 20px;
@@ -1850,6 +1951,105 @@ const companiesByCategory = {
   tv: ['HOT', 'YES', 'בזק', 'סלקום', 'פרטנר', 'אחר'],
   electricity: ['חברת החשמל', 'הוט', 'סלקום', 'פרטנר', 'בזק', 'אלקטרה', 'אחר']
 };
+
+const companyLogos = {
+  'סלקום': 'logos/selcom.png', 'פרטנר': 'logos/partner.png', 'פלאפון': 'logos/pelephone.png',
+  'HOT': 'logos/hot.jpg', 'גולן טלקום': 'logos/golan.png', 'WECOM': 'logos/wecom.png',
+  'בזק': 'logos/bezeq.jpg', 'YES': 'logos/yes.png', 'IBC': 'logos/bezeq.jpg',
+  'חברת החשמל': 'logos/bezeq-energy.jpg', 'הוט': 'logos/hot.jpg', 'אלקטרה': 'logos/selcom-energy.png',
+  '012': 'logos/hot-mobile.png', 'רמי לוי': 'logos/rami-levy.png', '019': 'logos/019.png', 'אחר': null
+};
+const companyColors = {
+  'סלקום': '#8B1FA9', 'פרטנר': '#FF6600', 'פלאפון': '#00A651', 'HOT': '#E4002B',
+  'גולן טלקום': '#00BCD4', '012': '#1976D2', 'רמי לוי': '#FFD600', '019': '#5C6BC0',
+  'WECOM': '#26A69A', 'בזק': '#0091EA', 'IBC': '#6D4C41', 'YES': '#7B1FA2',
+  'חברת החשמל': '#F57C00', 'הוט': '#E4002B', 'אלקטרה': '#2E7D32', 'אחר': '#78909C'
+};
+function getCompanyInitials(name) {
+  if (/^[A-Z0-9]/.test(name)) return name.slice(0, 3);
+  return name.slice(0, 2);
+}
+function companyIconHTML(name, size) {
+  const logo = companyLogos[name];
+  if (logo) {
+    return '<span class="cs-item-icon cs-item-logo" style="width:' + size + 'px;height:' + size + 'px"><img src="' + logo + '" alt="' + name + '"></span>';
+  }
+  const color = companyColors[name] || '#78909C';
+  const initials = getCompanyInitials(name);
+  return '<span class="cs-item-icon" style="background:' + color + ';width:' + size + 'px;height:' + size + 'px;font-size:' + (size < 30 ? '0.65rem' : '0.7rem') + '">' + initials + '</span>';
+}
+function buildCustomSelect(selectEl) {
+  if (selectEl.closest('.custom-select-wrap')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'custom-select-wrap';
+  selectEl.parentNode.insertBefore(wrap, selectEl);
+  wrap.appendChild(selectEl);
+  selectEl.style.display = 'none';
+
+  const trigger = document.createElement('div');
+  trigger.className = 'custom-select-trigger';
+  trigger.innerHTML = '<span class="cs-placeholder">اختاروا شركة</span><svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
+  wrap.appendChild(trigger);
+
+  const dropdown = document.createElement('div');
+  dropdown.className = 'cs-dropdown';
+  wrap.appendChild(dropdown);
+
+  function populate() {
+    dropdown.innerHTML = '';
+    Array.from(selectEl.options).forEach((opt, i) => {
+      if (i === 0 && opt.disabled) return;
+      const item = document.createElement('div');
+      item.className = 'cs-option' + (opt.selected && !opt.disabled ? ' selected' : '');
+      item.innerHTML = companyIconHTML(opt.value, 32) + '<span class="cs-item-name">' + opt.textContent + '</span><svg class="cs-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
+      item.addEventListener('click', () => {
+        selectEl.value = opt.value;
+        selectEl.dispatchEvent(new Event('change', { bubbles: true }));
+        updateTrigger();
+        closeAll();
+      });
+      dropdown.appendChild(item);
+    });
+  }
+
+  function updateTrigger() {
+    const val = selectEl.value;
+    const selectedOpt = selectEl.options[selectEl.selectedIndex];
+    if (!val || (selectedOpt && selectedOpt.disabled)) {
+      trigger.innerHTML = '<span class="cs-placeholder">اختاروا شركة</span><svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
+      trigger.classList.remove('has-value');
+    } else {
+      trigger.innerHTML = '<span class="cs-selected-item">' + companyIconHTML(val, 26) + selectedOpt.textContent + '</span><svg class="cs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
+      trigger.classList.add('has-value');
+    }
+    dropdown.querySelectorAll('.cs-option').forEach(o => {
+      o.classList.toggle('selected', o.querySelector('.cs-item-name').textContent === (selectedOpt ? selectedOpt.textContent : ''));
+    });
+  }
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = wrap.classList.contains('open');
+    closeAll();
+    if (!isOpen) { wrap.classList.add('open'); populate(); }
+  });
+  dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
+
+  const observer = new MutationObserver(() => { populate(); updateTrigger(); });
+  observer.observe(selectEl, { childList: true, subtree: true });
+  selectEl._csUpdate = () => { populate(); updateTrigger(); };
+  populate();
+  updateTrigger();
+}
+function closeAll() {
+  document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+}
+document.addEventListener('click', closeAll);
+
+function initAllCustomSelects() {
+  document.querySelectorAll('#currentProvider, .all-provider-select').forEach(buildCustomSelect);
+}
+initAllCustomSelects();
 
 async function fetchPackages(category) {
   try {

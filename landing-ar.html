@@ -2041,12 +2041,14 @@ function buildCustomSelect(selectEl) {
     });
   }
 
+  dropdown.addEventListener('touchmove', (e) => { e.stopPropagation(); }, { passive: true });
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
     const isOpen = wrap.classList.contains('open');
     closeAll();
     if (!isOpen) {
       wrap.classList.add('open');
+      document.body.style.overflow = 'hidden';
       populate();
       setTimeout(function() {
         if (dropdown.scrollHeight > dropdown.clientHeight) {
@@ -2078,6 +2080,7 @@ function buildCustomSelect(selectEl) {
 }
 function closeAll() {
   document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
+  document.body.style.overflow = '';
 }
 document.addEventListener('click', closeAll);
 

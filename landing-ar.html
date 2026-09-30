@@ -373,32 +373,35 @@ select:focus, input:focus {
   border: 1.5px solid var(--input-focus);
   border-top: none;
   border-radius: 0 0 14px 14px;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
   z-index: 9999;
-  max-height: 260px;
+  max-height: 50vh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   display: none;
   animation: dropdownOpen 0.2s ease;
 }
 .custom-select-wrap.open .cs-dropdown { display: block; }
-.custom-select-wrap.open-up .cs-dropdown {
-  top: auto;
-  bottom: 100%;
-  border-radius: 14px 14px 0 0;
-  border: 1.5px solid var(--input-focus);
-  border-bottom: none;
-  box-shadow: 0 -12px 32px rgba(0,0,0,0.12);
-}
-.custom-select-wrap.open-up .custom-select-trigger {
-  border-radius: 0 0 14px 14px;
-}
 @keyframes dropdownOpen {
   from { opacity: 0; transform: translateY(-6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 .cs-dropdown::-webkit-scrollbar { width: 6px; }
-.cs-dropdown::-webkit-scrollbar-track { background: transparent; }
-.cs-dropdown::-webkit-scrollbar-thumb { background: var(--divider); border-radius: 3px; }
+.cs-dropdown::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); }
+.cs-dropdown::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 3px; }
+.cs-dropdown.has-scroll::after {
+  content: '⌄';
+  position: sticky;
+  bottom: 0;
+  display: block;
+  text-align: center;
+  padding: 4px 0;
+  background: linear-gradient(transparent, #fff 40%);
+  color: var(--pink);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
 .cs-option {
   display: flex; align-items: center; gap: 12px;
   padding: 11px 16px;
@@ -2045,14 +2048,24 @@ function buildCustomSelect(selectEl) {
     if (!isOpen) {
       wrap.classList.add('open');
       populate();
-      var triggerRect = trigger.getBoundingClientRect();
-      var spaceBelow = window.innerHeight - triggerRect.bottom;
-      if (spaceBelow < 200) {
-        wrap.classList.add('open-up');
-      } else {
-        wrap.classList.remove('open-up');
-      }
-      setTimeout(function() { dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 50);
+      setTimeout(function() {
+        if (dropdown.scrollHeight > dropdown.clientHeight) {
+          dropdown.classList.add('has-scroll');
+        } else {
+          dropdown.classList.remove('has-scroll');
+        }
+        dropdown.addEventListener('scroll', function onScroll() {
+          if (dropdown.scrollTop + dropdown.clientHeight >= dropdown.scrollHeight - 10) {
+            dropdown.classList.remove('has-scroll');
+          } else {
+            dropdown.classList.add('has-scroll');
+          }
+        });
+        var rect = dropdown.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight) {
+          dropdown.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
     }
   });
   dropdown.addEventListener('click', (e) => { e.stopPropagation(); });
@@ -2064,7 +2077,7 @@ function buildCustomSelect(selectEl) {
   updateTrigger();
 }
 function closeAll() {
-  document.querySelectorAll('.custom-select-wrap.open').forEach(w => { w.classList.remove('open'); w.classList.remove('open-up'); });
+  document.querySelectorAll('.custom-select-wrap.open').forEach(w => w.classList.remove('open'));
 }
 document.addEventListener('click', closeAll);
 

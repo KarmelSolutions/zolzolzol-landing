@@ -2451,12 +2451,13 @@ async function buildResult() {
 
   const isCellular = serviceEl.value === 'cellular';
   const numLines = isCellular ? parseInt(numLinesEl.value) : 1;
-  const pricePerLine = price / numLines;
+  const pricePerLine = isCellular ? price : price;
+  const totalCurrentPrice = isCellular ? price * numLines : price;
 
   if (isCellular && pricePerLine > 30) {
     const bestPrice = 29.90;
     const totalNewPrice = Math.round(bestPrice * numLines * 100) / 100;
-    const savings = Math.round(price - totalNewPrice);
+    const savings = Math.round(totalCurrentPrice - totalNewPrice);
     const yearSavings = Math.round(savings * 12);
     const box = document.getElementById('resultBox');
     const linesNote = numLines > 1 ? ` (${numLines}${' קווים'})` : '';
@@ -2468,7 +2469,7 @@ async function buildResult() {
       <div class="result-summary">
         <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}${linesNote}</p>
         <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
-        <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+        <p class="result-summary-compare">${'במקום'} ${totalCurrentPrice} ₪ ${'שאתם משלמים היום'}</p>
       </div>
       <div class="savings-breakdown">
         <div class="savings-item">
@@ -2517,7 +2518,7 @@ async function buildResult() {
   const perLineNote = numLines > 1 ? `<small> לקו</small>` : '';
 
   if (isCellular) {
-    const savings = price - totalNewPrice;
+    const savings = totalCurrentPrice - totalNewPrice;
     const yearSavings = savings * 12;
     if (savings > 0) {
       box.innerHTML = `
@@ -2528,7 +2529,7 @@ async function buildResult() {
         <div class="result-summary">
           <p class="result-summary-label">${'המחיר הזול ביותר שמצאנו'}${linesNote}</p>
           <p class="result-price">${totalNewPrice} &#8362;<small> / ${'לחודש'}</small></p>
-          <p class="result-summary-compare">${'במקום'} ${price} ₪ ${'שאתם משלמים היום'}</p>
+          <p class="result-summary-compare">${'במקום'} ${totalCurrentPrice} ₪ ${'שאתם משלמים היום'}</p>
         </div>
         <div class="savings-breakdown">
           <div class="savings-item">

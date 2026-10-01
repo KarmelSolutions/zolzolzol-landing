@@ -2689,21 +2689,31 @@ function submitLead() {
 
   goToStep(4);
 
-  let numPackages = 1;
-  if (serviceEl.value === 'all') {
-    numPackages = document.querySelectorAll('.all-price-input').length;
-  } else if (serviceEl.value === 'cellular') {
-    numPackages = parseInt(numLinesEl.value) || 1;
-  }
   const perPackage = 40;
-  const totalReward = perPackage * numPackages;
+  let totalReward = perPackage;
+  let detailParts = [];
+  if (serviceEl.value === 'all') {
+    const numLines = parseInt(document.getElementById('allNumLines').value) || 1;
+    const cellularReward = perPackage * numLines;
+    detailParts.push(numLines + ' קווים × ' + perPackage + ' ₪ (סלולר)');
+    totalReward = cellularReward;
+    document.querySelectorAll('.all-price-input').forEach(inp => {
+      if (inp.dataset.cat !== 'cellular') {
+        totalReward += perPackage;
+        const catNames = {fiber: 'אינטרנט', tv: 'טלוויזיה', electricity: 'חשמל'};
+        detailParts.push(perPackage + ' ₪ (' + (catNames[inp.dataset.cat] || inp.dataset.cat) + ')');
+      }
+    });
+  } else if (serviceEl.value === 'cellular') {
+    const numLines = parseInt(numLinesEl.value) || 1;
+    totalReward = perPackage * numLines;
+    if (numLines > 1) {
+      detailParts.push(numLines + ' קווים × ' + perPackage + ' ₪');
+    }
+  }
   document.getElementById('modalRewardAmount').textContent = totalReward + ' ₪';
   const detailEl = document.getElementById('modalRewardDetail');
-  if (numPackages > 1) {
-    detailEl.textContent = numPackages + ' חבילות × ' + perPackage + ' ₪';
-  } else {
-    detailEl.textContent = '';
-  }
+  detailEl.textContent = detailParts.join(' + ');
 
   setTimeout(() => {
     document.getElementById('bonusModal').classList.add('show');

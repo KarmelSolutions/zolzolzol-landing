@@ -1750,11 +1750,14 @@ select:focus, input:focus {
           </div>
         </div>
         <div class="field-group">
-          <label class="field-label">كم تدفعون شهريًا على الخلوي؟</label>
+          <label class="field-label">كم تدفعون لكل خط؟</label>
           <div class="price-input-wrap">
-            <input type="number" class="all-price-input" data-cat="cellular" placeholder="לדוגמא: 120" min="1" oninput="updateAllSavings()">
+            <input type="number" class="all-price-input" data-cat="cellular" placeholder="مثلاً: 40" min="1" oninput="updateAllSavings(); updateAllTotalLinesCalc()">
             <span class="currency">₪</span>
           </div>
+        </div>
+        <div class="total-lines-calc" id="allTotalLinesCalc" style="display:none">
+          <span>المجموع لكل الخطوط:</span> <strong id="allTotalLinesAmount">0 ₪</strong> <span>شهريًا</span>
         </div>
         <div class="all-step-nav">
           <button class="btn btn-primary" onclick="nextAllStep()">← التالي: إنترنت</button>
@@ -2204,6 +2207,7 @@ serviceEl.addEventListener('change', () => {
     });
     document.querySelectorAll('.all-price-input').forEach(inp => { inp.value = ''; });
     document.getElementById('allNumLines').value = '1';
+    document.getElementById('allTotalLinesCalc').style.display = 'none';
   } else {
     const companies = companiesByCategory[svc] || ['אחר'];
     providerEl.innerHTML = '<option value="" disabled selected>' + 'اختاروا شركة' + '</option>';
@@ -2262,8 +2266,23 @@ function changeLinesCountAll(delta) {
   const current = parseInt(el.value) || 0;
   const next = Math.max(1, current + delta);
   el.value = next;
+  updateAllTotalLinesCalc();
+  updateAllSavings();
 }
-document.getElementById('allNumLines').addEventListener('input', () => {});
+document.getElementById('allNumLines').addEventListener('input', () => { updateAllTotalLinesCalc(); updateAllSavings(); });
+
+function updateAllTotalLinesCalc() {
+  const calc = document.getElementById('allTotalLinesCalc');
+  const lines = parseInt(document.getElementById('allNumLines').value) || 1;
+  const pricePerLine = parseInt(document.querySelector('.all-price-input[data-cat="cellular"]').value) || 0;
+  if (pricePerLine > 0 && lines > 1) {
+    const total = pricePerLine * lines;
+    document.getElementById('allTotalLinesAmount').textContent = total + ' ₪';
+    calc.style.display = '';
+  } else {
+    calc.style.display = 'none';
+  }
+}
 
 function updateAllStepsUI() {
   document.querySelectorAll('.all-step-item').forEach((item, i) => {
@@ -2297,9 +2316,13 @@ function updateElectricityDiscount() {
 
 function calculateAllSavings() {
   let totalSavings = 0;
+  const numLines = parseInt(document.getElementById('allNumLines').value) || 1;
   document.querySelectorAll('.all-price-input').forEach(inp => {
-    const price = parseInt(inp.value) || 0;
+    let price = parseInt(inp.value) || 0;
     const cat = inp.dataset.cat;
+    if (cat === 'cellular') {
+      price = price * numLines;
+    }
     const rate = allSavingsRates[cat] || 0.15;
     totalSavings += Math.round(price * rate);
   });
@@ -2348,9 +2371,12 @@ function finishAllSteps() {
   if (price && (!price.value || parseInt(price.value) <= 0)) { price.focus(); return; }
 
   const savings = calculateAllSavings();
+  const numLines = parseInt(document.getElementById('allNumLines').value) || 1;
   let totalPrice = 0;
   document.querySelectorAll('.all-price-input').forEach(inp => {
-    totalPrice += parseInt(inp.value) || 0;
+    let p = parseInt(inp.value) || 0;
+    if (inp.dataset.cat === 'cellular') p = p * numLines;
+    totalPrice += p;
   });
   priceEl.value = totalPrice;
 
